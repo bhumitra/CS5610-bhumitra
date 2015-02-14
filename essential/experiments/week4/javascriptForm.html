@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JavaScript Form</title>
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+    
+    <script type="text/javascript">
+        function validate() {
+            var name = document.form.name.value.length;
+            var sex = document.form.sex.value.length;
+            var email = document.form.email.value.length;
+            var date = document.form.date.value.length;
+            if (name == 0) {
+                alert("Enter your Name");
+                return false;
+            }
+            if (sex == 0) {
+                alert("Select your Gender");
+                return false;
+            }
+            if (email == 0) {
+                alert("email cannot be empty");
+                return false;
+            }
+            if (date == 0) {
+                alert("Enter date");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Form Validation using JavaScript</h1>
+        <h2>Login to access my Portfolio</h2>
+        <form name="form" action="../../Portfolio.html" >
+            <label>Name:</label>
+            <input type="text" name="name" placeholder="Enter Name">
+            <br />
+            <label>Sex:</label>
+            <input type="radio" name="sex" value="male">Male
+            <input type="radio" name="sex" value="female">Female
+            <br />
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="Enter email"/>
+            <br />
+            <label>Date:</label>
+            <input type="date" name="date" />
+            <br />
+            <br />
+            <input class="btn btn-success" type="submit" value="Login" onclick="return validate()">
+        </form>
+
+        <hr />
+        <p>
+            Here the validations are done by the function validate() using JavaScript. User is alerted if any of the field in the form is left empty. Try it out yourself. Check out the code below:
+            <pre>
+            function validate() {
+            var name = document.form.name.value.length;
+            var sex = document.form.sex.value.length;
+            var email = document.form.email.value.length;
+            var date = document.form.date.value.length;
+            if (name == 0) {
+                alert("Enter your Name");
+                return false;
+            }
+            if (sex == 0) {
+                alert("Select your Gender");
+                return false;
+            }
+            if (email == 0) {
+                alert("email cannot be empty");
+                return false;
+            }
+            if (date == 0) {
+                alert("Enter date");
+                return false;
+            }
+            return true;
+
+</pre>
+        </p>
+
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week4/javascriptForm.html" target="_blank">Source</a>
+        </p>
+    </div>
+</body>
+</html>

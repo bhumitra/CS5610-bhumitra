@@ -1,0 +1,6 @@
+﻿../../story/whatisnext.htm?../experiments/week3/story.txt			What is Next?
+../week3/responsive.html	  			Responsive Design -- Bootstrap
+../week3/responsiveimages.html	  		Responsive Images
+../week3/responsivemediaq.html	  		Media Queries in CSS
+../week3/bootstrapstart.html	  		Bootstrap -- Getting Started
+../week3/portfoliodesc.html	  		    Portfolio in Bootstrap

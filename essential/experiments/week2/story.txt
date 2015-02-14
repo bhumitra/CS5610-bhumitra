@@ -1,0 +1,3 @@
+﻿../../story/whatisnext.htm?../experiments/week2/story.txt			What is Next?
+../week2/exp1.html			  			Basics of CSS
+../week2/exploringcss.html	  			Exploring CSS

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>experiment4</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>EMBEDDING SOUNDS AND VIDEOS in HTML</h1>
+    
+    <h3>Embedding sound file using iframe tag</h3>
+    <iframe width="500" height="200" scrolling="no" frameborder="0" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/155640750&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+    <br />
+    <br />
+    <h3>Embedding videos</h3>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/9gTw2EDkaDQ" frameborder="0" ></iframe>
+
+    <h4>Select a Video from given list. This is done using select tag</h4>
+    <h3>upcoming movie trailers</h3>
+    <select id="selector">
+        <option value="http://www.youtube.com/embed/Q72LWqCx3pc"> Unfriend</option>
+        <option value="http://www.youtube.com/embed/lyy7y0QOK-0"> Chappie</option>
+        <option value="http://www.youtube.com/embed/aW_sfxUnbZA"> Mortdecai</option>
+    </select>
+    <br />
+    <br />
+    <button id="play" onclick="PlayVideo()">Load Video</button>
+    <br />
+    <br />
+
+
+    <iframe id="player" width="500" height="500"
+            src=""></iframe>
+
+
+    <script>
+        function PlayVideo() {
+            var clip = $("#selector").val();
+            $("#player").attr('src', clip);
+
+        }
+    </script>
+
+
+
+
+
+    <p>
+        <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week1/exp4.html" target="_blank">Source</a>
+    </p>
+
+</body>
+</html>

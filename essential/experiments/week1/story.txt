@@ -1,0 +1,6 @@
+﻿../../story/whatisnext.htm?../experiments/week1/story.txt			What is Next?
+../week1/exp1.html			  			Hello world in HTML
+../week1/exp2.html			  			Basic tags of HTML
+../week1/exp3.html			  			Working with form and input elements in HTML
+../week1/exp4.html			  			Embedding videos and sounds in HTML
+../week1/exp5.html			  			Exploring HTML5 new features

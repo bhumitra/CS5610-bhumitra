@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JQuery List</title>
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Using JQuery To-do List</h1>
+        </div>
+
+        <div class="page_content">
+            <p class="lead">Type something in the box and click add. It will get added to the to-do list. To delete what you added, just select it and hit delete. It will be removed from the list. This is done using JQuery by the following code</p>
+        </div>
+
+        <pre>
+            $(document).ready(function () {
+                $(&quot;#add&quot;).click(function () {
+                    var task = $(&quot;#item&quot;).val();
+                    $(&quot;#listtable&quot;).append(&apos;&lt;tr&gt;&lt;td&gt;&lt;span&gt;&lt;input type=&quot;checkbox&quot; name=&quot;itemCheck&quot;&gt;&apos; + task + &apos;&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&apos;);
+                });
+            });
+            function Delete() {
+                var x = confirm(&quot;Do you want to delete the selected items?&quot;);
+                console.log(x);
+                $(&apos;input[type=checkbox]&apos;).each(function () {
+                    var sThisVal = (this.checked ? $(this).val() : &quot;&quot;);
+                    if (sThisVal == &apos;on&apos; &amp;&amp; x == true) {
+                        $(this).parents(&quot;tr&quot;).fadeOut();
+                        $(this).fadeOut();
+                    }
+                });
+            }
+
+</pre>
+
+            <input type="text" class="block4" id="item" placeholder="Add item to To-Do list" />
+            <button type="button" id="add" class="btn btn-success">Add</button>
+            <button type="button" class="btn btn-warning" onclick="Delete()">Delete</button>
+
+        <table class="table">
+            <tbody id="listtable">
+            </tbody>
+        </table>
+
+        <script>
+            $(document).ready(function () {
+                $("#add").click(function () {
+                    var task = $("#item").val();
+                    $("#listtable").append('<tr><td><span><input type="checkbox" name="itemCheck">' + task + '</span></td></tr>');
+                });
+            });
+
+            function Delete() {
+                var x = confirm("Do you want to delete the selected items?");
+                console.log(x);
+                $('input[type=checkbox]').each(function () {
+                    var sThisVal = (this.checked ? $(this).val() : "");
+                    if (sThisVal == 'on' && x == true) {
+                        $(this).parents("tr").fadeOut();
+                        $(this).fadeOut();
+                    }
+                });
+            }
+        </script>
+
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week4/todolist.html" target="_blank">Source Code</a>
+        </p>
+
+    </div>
+</body>
+</html>

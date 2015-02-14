@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week2 - experiment 1</title>
+    <link rel="stylesheet" href="../../css/cssexperiment.css" />
+
+</head>
+<body>
+
+    <h3>Move Cursor over the image to see the hovering effect</h3>
+       <div class="imageAnimate"></div>
+    <p>This is achieved by the following piece of code in the stylesheet</p>
+
+    <pre>
+       .imageAnimate {
+        margin-right:5px;
+        float:left;
+        width: 400px;
+        height: 250px;
+        background-image: url('../images/Pictures/img1.jpg');
+        }
+       .imageAnimate:hover {
+        width: 400px;
+        height: 250px;
+        background-image: url('../images/Pictures/img1.gif');
+        }
+    </pre>
+
+    <br />
+
+    <h3>Zooming the height of the image on hover. Move over to the below image to zoom it.</h3>
+    <br />
+    <div id="myimage">
+
+        <img src="../../images/Pictures/me.jpg" height="150" width="150" />
+    </div>
+    <br />
+    <h3>Using webkits fir smooth transformations. Move over to the below image to zoom it.</h3>
+    <p>This is done using the following piece of code in the shylesheet</p>
+    <pre>
+        .boxanimate {
+        width: 100px;
+        height: 100px;
+        background: blue;
+        -webkit-transition: width 2s; 
+        transition: width 2s;
+        }
+        .boxanimate:hover {
+        width: 300px;
+        }
+    </pre>
+
+    <div class="boxanimate"></div>
+
+    <div class="boxanimate"></div>
+
+    <h3>Using Gradients from CSS</h3>
+    <div class="gradient"></div>
+
+    <h3>Using Text shadows from CSS</h3>
+    <div class="shadow">Text with shadows</div>
+
+    <hr />
+    <h3>Reference</h3>
+    <a href="http://www.w3schools.com"> w3schools.com</a>
+    <hr />
+
+    <footer>
+        <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week2/exploringcss.html" target="_blank">Source Code - html</a>|
+        <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/css/cssexperiment.css" target="_blank">Source Code - CSS</a>
+    </footer>
+
+
+
+
+</body>
+</html>

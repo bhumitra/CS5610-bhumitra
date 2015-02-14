@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Responsive Media Queries</title>
+    <link rel="stylesheet" href="../../css/responsive.css" />
+</head>
+<body>
+    <div class="pad">
+        <div class="maincontent">
+            <h1>A Responsive Web Page -- Using Media Queries</h1>
+            <h3>Go ahead and change the window size and see the page content adjust accordingly</h3>
+            <img id="image" src="../../images/Pictures/me.jpg" title="Bhumitra Nagar" />
+            <br />
+            <div>
+                I'm a graduate student at Northeastern University pursuing Master's in Computer Science. I am building this website as a part of Web Development course CS5610. I have 3 years of experience as a senior software engineer at Infosys Ltd. where I worked as an Java application developer and an Oracle database administrator.I am looking forward to optimally utilize my computing talent in a free environment to implement ideas I always possessed but never got a chance to implement – “Ideas are no one’s property, they belong to whoever expresses them best.” That’s how Zuckerberg did it, that’s how I would do it. I am a gamer, football fan and have interest in designing and playing computer games. "Gaming might be considered a pastime; it’s a passion for me."
+                I'm a graduate student at Northeastern University pursuing Master's in Computer Science. I am building this website as a part of Web Development course CS5610. I have 3 years of experience as a senior software engineer at Infosys Ltd. where I worked as an Java application developer and an Oracle database administrator.I am looking forward to optimally utilize my computing talent in a free environment to implement ideas I always possessed but never got a chance to implement – “Ideas are no one’s property, they belong to whoever expresses them best.” That’s how Zuckerberg did it, that’s how I would do it. I am a gamer, football fan and have interest in designing and playing computer games. "Gaming might be considered a pastime; it’s a passion for me."
+                I'm a graduate student at Northeastern University pursuing Master's in Computer Science. I am building this website as a part of Web Development course CS5610. I have 3 years of experience as a senior software engineer at Infosys Ltd. where I worked as an Java application developer and an Oracle database administrator.I am looking forward to optimally utilize my computing talent in a free environment to implement ideas I always possessed but never got a chance to implement – “Ideas are no one’s property, they belong to whoever expresses them best.” That’s how Zuckerberg did it, that’s how I would do it. I am a gamer, football fan and have interest in designing and playing computer games. "Gaming might be considered a pastime; it’s a passion for me."
+            </div>
+            <hr />
+            <div class="field-group">
+                <label class="field-label">Field Label:</label>
+                <div class="field">
+                    <input />
+                    <p>As soon as the window size becomes less than 960px, this input bar becomes vertically aligned.</p>
+                </div>
+            </div>
+
+            <br /><hr /><br />
+            <p>Here I made use of the media queries in CSS. The following peice of code produces this responsive behaviour according to the change in screen size.
+            Different behaviour is defined for different types of screen size. (max-width/min-width). So as width decreases, the background color changes, and the image size also decreases. 
+            When width becomes too small, image is not shown. The field group and field label come into picture only when the page width is more than 960px by horizontally aligning the label and input field. Hence the responsive behaviour of the input field is acheived.</p>
+            <pre>       
+       @media screen and (min-width: 960px) {
+          body {
+                background-color: ThreeDLightShadow;
+            }
+            #image {
+                width: 500px;
+            }
+            .field-group {
+                clear: both;
+            }
+            .field-label {
+                float: left;
+            }
+           
+        }
+        @media screen and (max-width: 960px) {
+            body {
+                background-color: lightblue;
+            }
+            #image {
+                width: 420px;
+            }
+        }
+        @media screen and (max-width: 720px) {
+            #image {
+                width: 380px;
+            }
+            body {
+                background-color: lightgreen;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            #image {
+                width: 340px;
+            }
+            body {
+                background-color: lightyellow;
+            }
+        }
+        @media screen and (max-width: 450px) {
+            #image {
+                width: 300px;
+            }
+            body {
+                background-color: lightsalmon;
+            }
+        }
+        @media screen and (max-width: 350px) {
+            #image {
+                display: none;
+            }
+        }
+</pre>
+
+        </div>
+    </div>
+    <p>
+        <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week3/responsivemediaq.html" target="_blank">Source Code</a>
+    </p>
+</body>
+</html>

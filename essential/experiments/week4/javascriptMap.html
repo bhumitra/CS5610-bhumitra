@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JavaScript Map</title>
+    <style type="text/css">
+       #map-canvas {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOLo29Jbg9m0zaX0A-NVcaag3qSpu2hoo">
+    </script>
+    <script type="text/javascript">
+        function initialize() {
+            var mapOptions = {
+                zoom: 15,               
+            };
+         
+
+            var map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = new google.maps.LatLng(position.coords.latitude,
+                                                     position.coords.longitude);
+
+                    var infowindow = new google.maps.InfoWindow({
+                        map: map,
+                        position: pos,
+                        content: 'Location found using HTML5.'
+                    });
+
+                    map.setCenter(pos);
+                }, function () {
+                    handleNoGeolocation(true);
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleNoGeolocation(false);
+            }
+        }
+
+        function handleNoGeolocation(errorFlag) {
+            if (errorFlag) {
+                var content = 'Error: The Geolocation service failed.';
+            } else {
+                var content = 'Error: Your browser doesn\'t support geolocation.';
+            }
+
+            var options = {
+                map: map,
+                position: new google.maps.LatLng(60, 105),
+                content: content
+            };
+
+            var infowindow = new google.maps.InfoWindow(options);
+            map.setCenter(options.position);
+        }
+       
+    </script>
+</head>
+<body onload="initialize()">
+    <div class="container">
+        <h1>Map using JavaScript</h1>
+        <div id="map-canvas"></div>
+        <hr />
+        <p>This is done using the code given below. The map is loaded using the initialize() function which is called as soon as body is loaded.
+        THe location is set by the navigator. This also handles the case when browser doesnt support geolocation.
+        </p>
+        <pre>
+         function initialize() {
+            var mapOptions = {
+                zoom: 15,               
+            };
+         
+            var map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = new google.maps.LatLng(position.coords.latitude,
+                                                     position.coords.longitude);
+                    var infowindow = new google.maps.InfoWindow({
+                        map: map,
+                        position: pos,
+                        content: 'Location found using HTML5.'
+                    });
+                    map.setCenter(pos);
+                }, function () {
+                    handleNoGeolocation(true);
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleNoGeolocation(false);
+            }
+        }
+        function handleNoGeolocation(errorFlag) {
+            if (errorFlag) {
+                var content = 'Error: The Geolocation service failed.';
+            } else {
+                var content = 'Error: Your browser doesn\'t support geolocation.';
+            }
+            var options = {
+                map: map,
+                position: new google.maps.LatLng(160, 105),
+                content: content
+            };
+            var infowindow = new google.maps.InfoWindow(options);
+            map.setCenter(options.position);
+        }
+        </pre>
+        <a href="https://developers.google.com/maps/documentation/javascript/examples/map-geolocation">References</a>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week4/javascriptMap.html" target="_blank">Source</a>
+        </p>
+    </div>
+</body>
+</html>

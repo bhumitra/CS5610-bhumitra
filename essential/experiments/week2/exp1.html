@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Week2 - experiment 1</title>
+    <style>
+        .movein {
+            -webkit-animation-duration: 3s;
+            -webkit-animation-name: movein;
+            -webkit-animation-iteration-count: 1;
+        }
+
+
+        @-webkit-keyframes movein {
+            from {
+                margin-left: 30%;
+                width: 50%;
+            }
+
+            to {
+                margin-right: 100%;
+                width: 0%;
+            }
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin: auto;
+            position: relative;
+            width: 300px;
+            height: 350px;
+            font-family: Tahoma;
+            font-size: 16px;
+            line-height: 22px;
+            font-weight: bold;
+            color: crimson;
+            border-radius: 1px;
+            padding: 10px;
+            border: 1px solid #999;
+            border: inset 1px solid #333;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+            align-content: center;
+            align-items: center;
+        }
+
+        input {
+            width: 300px;
+            display: block;
+            border: 3px solid #999;
+            height: 30px;
+            -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #PureText {
+            float: left;
+            font-size: x-large;
+        }
+
+        p {
+            color: blue;
+        }
+    </style>
+    <script>
+        function startup() {
+            var e = document.getElementById("myform");
+            e.className = "movein";
+        }
+    </script>
+
+</head>
+<body onload="startup()">
+
+
+    <hr />
+    <h3 id="top">Learning basics of CSS</h3>
+    <hr />
+    <h3>Adding styling to a simple form</h3>
+    <div class="container" style="max-width : 500px; align-self:center">
+        <div id="myform">
+            <form>
+
+                <div>
+                    <label for="name">User ID</label>
+                    <input id="name" type="text" placeholder="Username">
+                </div>
+
+                <div>
+                    <label for="password">Password</label>
+                    <input id="password" type="password" placeholder="Password">
+                </div>
+
+                <div>
+                    <label for="DOB">DOB</label>
+                    <input id="dob" type="date" />
+                </div>
+
+                <div>
+                    <label for="house">Address</label>
+                    <input id="house" type="text" placeholder="Enter Address here...">
+                </div>
+
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+
+            </form>
+        </div>
+
+
+        <p>
+            I have added styling to a simple form. <br />
+            I have added the below styling to the form which has changed its appearance completely.
+            <pre>
+           form {
+            margin: auto;
+            position: relative;
+            width: 300px;
+            height: 350px;
+            font-family: Tahoma;
+            font-size: 16px;
+            line-height: 22px;
+            font-weight: bold;
+            color: crimson;
+            border-radius: 1px;
+            padding: 10px;
+            border: 1px solid #999;
+            border: inset 1px solid #333;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+            align-content: center;
+            align-items: center;
+        }
+    </pre>
+
+        </p>
+
+        <hr />
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week2/exp1.html" target="_blank">Source Code</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

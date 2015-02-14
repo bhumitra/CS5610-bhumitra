@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Exploring jQuery</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+
+    <style>
+        .label1.ui-selected {
+            background: red;
+        }
+
+        .label2.ui-selected {
+            background: yellow;
+        }
+
+        .label3.ui-selected {
+            background: blue;
+        }
+
+        .resize {
+            width: 200px;
+            height: 150px;
+            background-color: lightyellow;
+            border: groove;
+        }
+    </style>
+    <!--jquery script-->
+    <script>
+        $(function () {
+
+            $("h4").html("This text is written via jquery");
+
+            $(".selec").selectable();
+
+            $(".drag").draggable();
+
+            $(".resize").resizable();
+
+            $(".sort").sortable();
+
+
+            $(".accordion").accordion();
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+
+            <h1>Exploring jQuery</h1>
+
+        </div>
+        <h4></h4>
+        <div class="page-header">
+            <h2>Selectable Text</h2>
+        </div>
+        <ul class="selec">
+            <li><div class="label1">select to change color to red</div></li>
+            <li><div class="label2">select to change color to green</div></li>
+            <li><div class="label3">select to change color to purple</div></li>
+        </ul>
+
+
+        <h2>Draggable Text</h2>
+        <div class="drag">
+            <h3 style="color:red;">I can be dragged anywhere you want.</h3>
+
+        </div>
+        <div class="page-header">
+            <h2>Resizable Box</h2>
+        </div>
+        <div class="resize">This box can be resized</div>
+
+
+        <div class="page-header">
+            <h2>Sorting</h2>
+        </div>
+        <ol class="sort" style="background-color:lightcoral">
+            <li><div class="ui-state-default">1 -- Drag and put up or down below any element in this list</div></li>
+            <li><div class="ui-state-default">2 -- Drag and put up or down below any element in this list</div></li>
+            <li><div class="ui-state-default">3 -- Drag and put up or down below any element in this list</div></li>
+            <li><div class="ui-state-default">4 -- Drag and put up or down below any element in this list</div></li>
+
+        </ol>
+
+        <div class="page-header">
+            <h2>Show a section at a time</h2>
+        </div>
+
+        <div class="accordion">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Select me to show me</h3>
+                </div>
+            </div>
+
+            <div>
+                <p>This is section 1</p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Select me to show me</h3>
+                </div>
+            </div>
+            <div>
+                <p>This is section 2</p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Select me to show me</h3>
+                </div>
+            </div>
+            <div>
+                <p>This is section 3</p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </div>
+        </div>
+        <br />
+
+        <p>Check out the source code below for the implementation of each of the functionalities demonstrated in this page</p>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week4/jqueryExplore.html" target="_blank">Source Code</a>
+        </p>
+    </div>
+</body>
+</html>
