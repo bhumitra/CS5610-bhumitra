@@ -1,6 +1,6 @@
 ﻿../../story/whatisnext.htm?../experiments/week4/story.txt			What is Next?
-../week4/					  			todolist.html
-../week4/					  			javascriptForm.html
-../week4/					  			javascriptMap.html
-../week4/					  			jqueryExplore.html
-../week4/					  			JavaScript
+../week4/javascriptForm.html				Javascript - Form
+../week4/javascriptMap.html					Javascript - Map
+../week4/todolist.html						To-Do list - jQuery
+../week4/jqueryExplore.html					Exploring jQuery
+../week4/exp5.html							More on Javascript and jQuery

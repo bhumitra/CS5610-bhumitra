@@ -1,3 +1,8 @@
 ﻿../../story/whatisnext.htm?../experiments/week2/story.txt			What is Next?
 ../week2/exp1.html			  			Basics of CSS
-../week2/exploringcss.html	  			Exploring CSS
+../week2/exploringcss.html	  			Exploring CSS (experiments 2,3,4,5)
+../week2/cssmenu.html	  				CSS Menu - Additional Experiment
+../week2/parallax.html	  				Parallax Scroll - Additional Experiment
+../week2/glow.html	  					GLOW effect - Additional Experiment
+
+

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS GLOW</title>
+
+    <style>
+      body 
+        {
+            background-color: aqua;
+        }
+   pre,code{
+       color:blue;
+   }
+        .p_glow_text1:hover {
+           
+            -webkit-animation-name: glowfn;
+            -webkit-animation-duration: 1.5s;
+            -webkit-animation-direction: alternate;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-direction: alternate;
+            -webkit-animation-iteration-count: infinite;
+            animation: glowfn 1.5s ease-in-out infinite alternate;
+        }
+        .p_glow_text1 {
+            text-align: center;
+                       
+            font-size: 3.5em;
+            font-family:Calibri;
+            color: blue;
+            margin: 20px 0 20px 0;
+            /*Transition property for Chrome,Safari*/
+            -webkit-transition-property: all;
+            -webkit-transition-duration: 0.5s;
+            transition: all 0.5s;
+        }
+
+        .d_box {
+            background-color: black;
+            width: 40%;
+            text-align:center;
+        }
+        @-webkit-keyframes glowfn {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px blue, 0 0 70px blue, 0 0 80px blue, 0 0 100px blue, 0 0 150px blue;
+            }
+
+            to {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px blue, 0 0 35px blue, 0 0 40px blue, 0 0 50px blue, 0 0 75px blue;
+            }
+        
+    
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      
+
+            <h1>CSS - Glow Effects</h1>
+            <br />
+
+            <p> Hover over to the below text to see the glow effect</p>
+            <div class="d_box">
+                <p class="p_glow_text1">
+                    Bhumitra Nagar
+                </p>
+            </div>
+
+        <div>
+            <p> Check out the source code to see the implementation for the glow effect</p>
+        </div>
+
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week2/glow.html" target="_blank">Source Code</a>
+        </p>
+
+    </div>
+</body>
+</html>

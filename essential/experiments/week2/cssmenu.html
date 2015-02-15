@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS Menu</title>
+
+    <style>
+        #menu {
+            zoom: 1;
+            width: auto;
+            background: #000000;
+            padding: 8px 0;
+        }
+
+            #menu:before {
+                content: '';
+                display: block;
+            }
+
+            #menu:after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+
+            #menu ul {
+                list-style-type: none;
+                position: relative;
+                display: block;
+                font-size: 12px;
+                font-family: Verdana, Helvetica, Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                border-bottom: 1px solid blue;
+                zoom: 1;
+            }
+
+                #menu ul:before {
+                    content: '';
+                    display: block;
+                }
+
+                #menu ul:after {
+                    content: '';
+                    display: table;
+                    clear: both;
+                }
+
+            #menu li {
+                display: block;
+                float: left;
+                margin: 0;
+                padding: 0;
+            }
+
+                #menu li a {
+                    float: left;
+                    color: #A79787;
+                    text-decoration: none;
+                    height: 24px;
+                    padding: 9px 15px 0;
+                    font-weight: normal;
+                }
+
+                #menu li:hover,
+                #menu .active {
+                    text-decoration: none;
+                    border-bottom: 2px solid blue;
+                }
+
+                    #menu li:hover a {
+                        color: #fff;
+                    }
+
+                    #menu .active a {
+                        color: #fff;
+                        font-weight: 700;
+                    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Implementing the Menu for home page using pure CSS. Will be using this for my homepage</h1>
+        <div id='menu'>
+            <ul>
+                <li><a href="sitestatistics/" target="_blank">SiteStatistics</a></li>
+                <li><a href="statistics/" target="_blank">Statistics</a></li>
+                <li><a href="source/" target="_blank">Source</a></li>
+                <li><a href="search/" target="_blank">Search</a></li>
+                <li><a href="searchtree/" target="_blank">SearchTree</a></li>
+                <li><a href="textview/" target="_blank">TextView</a></li>
+                <li><a href="filelist.aspx" target="_blank">FileList</a></li>
+                <li><a href="autofile.aspx" target="_blank">AutoFile</a></li>
+                <li><a href="images/autoimage.aspx" target="_blank">Images</a></li>
+                <li><a href="blog/" target="_blank">Blog</a></li>
+                <li class="active"><a href="../bhumitra/story/index.htm?../experiments/story.txt" target="_blank">Experiments</a></li>
+                <li class="active"><a href="https://github.com/bhumitra/CS5610-bhumitra" target="_blank">GitHub</a></li>
+            </ul>
+
+        </div>
+        <div>
+            <p> Check out the source code to see the implementation for the CSS menu.</p>
+        </div>
+
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week2/cssmenu.html" target="_blank">Source Code</a>
+        </p>
+
+    </div>
+</body>
+</html>

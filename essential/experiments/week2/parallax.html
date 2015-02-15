@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS Menu</title>
+
+    <style>
+        #scroll {
+            width: 500px;
+            height: 190px;
+            margin: 100px auto;
+            background: green;
+            border: 2px solid #000;
+            overflow: auto;
+            white-space: nowrap;
+            box-shadow: 0 0 10px #000;
+        }
+
+        [class*="bg_"] {
+            height: 95vh;
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: cover;
+            background-origin: border-box;
+        }
+
+        .bg_img1 {
+            background-image: url(../../images/Pictures/binary-code2.jpg);
+        }
+
+        .bg_img2 {
+            background-image: url(../../images/Pictures/black-leather-texture.jpg);
+        }
+
+        .bg_img3 {
+            background-image: url(../../images/Pictures/matrix-code_00292064.jpg);
+        }
+
+        .bg_img4 {
+            background-image: url(../../images/Pictures/me.jpg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Implementing the Parallax scrolling. Scroll down the page to see it in effect</h1>
+        <div class="bg_img1"></div>
+        <div>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <div class="bg_img2"></div>
+        <div>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <div class="bg_img3"></div>
+        <div>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <div class="bg_img4"></div>
+        <div>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+
+        <div>
+            <p> Check out the source code to see the implementation for the parallax scrolling. The background images remain fixed to their position and do not move during scrolling thus creating a parallax effect.</p>
+        </div>
+
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week2/parallax.html" target="_blank">Source Code</a>
+        </p>
+
+    </div>
+</body>
+</html>
