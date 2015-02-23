@@ -1,0 +1,6 @@
+﻿../../story/whatisnext.htm?../experiments/week5/story.txt			What is Next?
+../week5/AngularHello.html				AngularJS - Hello World
+../week5/AngularEvents.html				AngularJS - Event Handling
+../week5/AngularValidations.html		AngularJS - Validations
+../week5/AngularLibrary.html			AngularJS - Movie Library
+../week5/AngularLibraryext.html			AngularJS - Movie Library search with API

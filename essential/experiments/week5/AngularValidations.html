@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Anugular Validations</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+ 
+    <script>
+    function validateCtrl($scope) {
+        $scope.user = 'John Doe';
+        $scope.email = 'john.doe@example.com';
+    }
+    </script>
+
+</head>
+<body class="container">
+
+    <h2>Validations Using Angular</h2>
+    <h3>This experiment explores the the validation controls provided by angular. Enter invalid entries in the fields given below. The submit button will be disabled by angular and you will be prompted to enter correct values.</h3>
+    <form ng-app="" ng-controller="validateCtrl" name="userForm" novalidate>
+        <p>Name:<br>
+            <input type="text" name="user" ng-model="user" required>
+            <span style="color:red" ng-show="userForm.user.$dirty && userForm.user.$invalid">
+                <span ng-show="userForm.user.$error.required">Username is required.</span>
+            </span>
+        </p>
+        <p>Email:<br>
+            <input type="email" name="email" ng-model="email" required>
+            <span style="color:red" ng-show="userForm.email.$dirty && userForm.email.$invalid">
+                <span ng-show="userForm.email.$error.required">Email is required.</span>
+                <span ng-show="userForm.email.$error.email">Invalid email address.</span>
+            </span>
+        </p>
+        <p>
+            <input type="submit" class="btn btn-success" ng-disabled="userForm.user.$dirty && userForm.user.$invalid || userForm.email.$dirty && userForm.email.$invalid">
+        </p>
+        <hr />
+        <h2>How it is done?</h2>
+        <div>
+            <p>Below is the code that is responsible for the validations. The controller validateCtrl binds the value for the username and email and checks them is they are invalid. If invalid, an error is thrown to the user. ng-disabled is either true or false according to the values given by the user. It disables the submit button for inappropriate values.</p>
+        </div>
+        <pre>
+        &lt;form ng-app=&quot;&quot; ng-controller=&quot;validateCtrl&quot; name=&quot;userForm&quot; novalidate&gt;
+        &lt;p&gt;Name:&lt;br&gt;
+            &lt;input type=&quot;text&quot; name=&quot;user&quot; ng-model=&quot;user&quot; required&gt;
+            &lt;span style=&quot;color:red&quot; ng-show=&quot;userForm.user.$dirty &amp;&amp; userForm.user.$invalid&quot;&gt;
+                &lt;span ng-show=&quot;userForm.user.$error.required&quot;&gt;Username is required.&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p&gt;Email:&lt;br&gt;
+            &lt;input type=&quot;email&quot; name=&quot;email&quot; ng-model=&quot;email&quot; required&gt;
+            &lt;span style=&quot;color:red&quot; ng-show=&quot;userForm.email.$dirty &amp;&amp; userForm.email.$invalid&quot;&gt;
+                &lt;span ng-show=&quot;userForm.email.$error.required&quot;&gt;Email is required.&lt;/span&gt;
+                &lt;span ng-show=&quot;userForm.email.$error.email&quot;&gt;Invalid email address.&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;input type=&quot;submit&quot; class=&quot;btn btn-success&quot; ng-disabled=&quot;userForm.user.$dirty &amp;&amp; userForm.user.$invalid || userForm.email.$dirty &amp;&amp; userForm.email.$invalid&quot;&gt;
+        &lt;/p&gt;
+        &lt;hr /&gt;
+        &lt;h2&gt;How it is done?&lt;/h2&gt;
+        &lt;div&gt;
+            &lt;p&gt;The &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;/form&gt;
+</pre>
+    </form>
+
+    <p>
+        <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/AngularValidations.html" target="_blank">Source</a>
+    </p>
+
+
+</body>
+</html>

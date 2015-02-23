@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Movie Library</title>
+    <script src="../../js/angular.min.js"></script>
+    <script src="js/MoviesApp2.js"></script>
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+</head>
+<body ng-app="MoviesApp">
+    <div ng-controller="MovieController" class="container">
+        <h1>Movie Library using Angular</h1>
+        <h4>
+            This is an extension of the movie library. Here, the data is fetched as an JSON object from an API. Type the name of a movie and hit search and wait for a few seconds.
+            When you hit search, searchMovies() is called. The data is fetched and populated into the table below. All functionalities of add/remove/update movies remain same.     
+        </h4>
+        <div class="input-group">
+            <input type="text" ng-model="searchByTitle" class="form-control" placeholder="Search for a movie...">
+            <span class="input-group-btn">
+                <button ng-click="searchMovies()" class="btn btn-default" type="button">Search</button>
+            </span>
+        </div><!-- /input-group -->
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Rating</th>
+                    <th>Plot</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr>
+                    <th><input ng-model="movie.title" class="form-control" /></th>
+                    <th><input ng-model="movie.year" class="form-control" /></th>
+                    <th><input ng-model="movie.rating" class="form-control" /></th>
+                    <th><input ng-model="movie.plot" class="form-control" /></th>
+                    <th>
+                        <button ng-click="updateMovie()" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                        <button ng-click="addMovie()" class="btn btn-success">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="movie in movies">
+                    <td>{{movie.title}}</td>
+                    <td>{{movie.year}}</td>
+                    <td>{{movie.rating}}</td>
+                    <td>
+                        <img class="poster" ng-src="{{movie.urlPoster}}" width="50" />
+                        {{movie.plot}}
+                    </td>
+                    <td>
+                        <button ng-click="selectMovie(movie)" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button ng-click="removeMovie(movie)" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                      
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr />
+        <h4> How it is done?</h4>
+        <div>
+            <p>The movie app controller populates the table with the data fetched as an JSON object. The code for the controller is given below:</p>
+            <pre>
+var app = angular.module("MoviesApp", []);
+function myapifilms(response) {
+    alert(response);
+}
+app.controller("MovieController", function ($scope, $http) {
+   
+    $scope.searchMovies = function () {
+        var title = $scope.searchByTitle;
+        $http.jsonp("http://www.myapifilms.com/imdb?title=" + title + "&format=JSONP&aka=0&business=0&seasons=0&seasonYear=0&technical=0&filter=N&exactFilter=0&limit=10&lang=en-us&actors=N&biography=0&trailer=0&uniqueName=0&filmography=0&bornDied=0&starSign=0&actorActress=0&actorTrivia=0&movieTrivia=0&awards=0&moviePhotos=N&movieVideos=N&callback=JSON_CALLBACK")
+        .success(function (response) {
+            $scope.movies = response;
+        })
+    }
+    
+    $scope.addMovie = function () {
+        var newMovie = {
+            title: $scope.movie.title,
+            rating: $scope.movie.rating,
+            year: $scope.movie.year,
+            plot: $scope.movie.plot
+        };
+        $scope.movies.push(newMovie);
+    }
+    $scope.removeMovie = function (movie) {
+        var index = $scope.movies.indexOf(movie);
+        $scope.movies.splice(index, 1);
+    }
+    $scope.selectMovie = function (movie) {
+        $scope.movie = movie;
+    }
+    $scope.updateMovie = function () {
+        alert($scope.movie.title);
+    }
+});
+            </pre>
+           <p>The data is fetched from myapifilms.com and is searched according to the titles. The add to favorites functionality will be added in the next experiment. When the data is fetched which populates the movies by the response received "$scope.movies = response" and it is iterated to populate the table on the page </p>
+        </div>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/AngularLibraryExt.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/js/MoviesApp2.js" target="_blank">JS Source</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

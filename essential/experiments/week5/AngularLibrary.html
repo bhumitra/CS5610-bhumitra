@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Movie Library</title>
+    <script src="../../js/angular.min.js"></script>
+    <script src="js/MoviesApp.js"></script>
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+</head>
+<body ng-app="MoviesApp">
+    <div ng-controller="MovieController" class="container">
+        <h1>Movie Library using Angular</h1>
+        <h4>Here, a movie library is created using angular JS. Everything here is done on the frontend. There is no persistance involved. 
+        Initially the data from the controller populates the page. Additional data can be added to the library by typing the data in the input box and clicking + button. Similarly existing data can be modified by clicking the pencil icon and making changes or can be deleted by clicking the X button.</h4>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Rating</th>
+                    <th>Plot</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr>
+                    <th><input ng-model="movie.title" class="form-control" /></th>
+                    <th><input ng-model="movie.year" class="form-control" /></th>
+                    <th><input ng-model="movie.rating" class="form-control" /></th>
+                    <th><input ng-model="movie.plot" class="form-control" /></th>
+                    <th>
+                        <button ng-click="updateMovie()" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                        <button ng-click="addMovie()" class="btn btn-success">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="movie in movies">
+                    <td>{{movie.title}}</td>
+                    <td>{{movie.year}}</td>
+                    <td>{{movie.rating}}</td>
+                    <td>{{movie.plot}}</td>
+                    <td>
+                        <button ng-click="selectMovie(movie)" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button ng-click="removeMovie(movie)" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+        <h4> How it is done?</h4>
+        <div>
+            <p>The movie app controller populates the table initially as we have a movies array defined. The code for the controller is given below:</p>
+            <pre>
+        var app = angular.module("MoviesApp", []);
+        app.controller("MovieController",
+        function ($scope) {
+        var movies = [
+            { title: "Avatar", rating: "PG-13", year: 2009, plot: "Takes place on the mystical land of Pandora" },
+            { title: "Avengers 2: Age of Ultron", rating: "PG-13", year: 2015, plot: "Avengers Assemble to fight invaders" },
+            { title: "Star Trek", rating: "PG-13", year: 2013, plot: "Adventures of Captain Kirk and Spock" }
+        ];  
+        $scope.movies = movies;
+        $scope.addMovie = function () {
+            var newMovie = {
+                title: $scope.movie.title,
+                rating: $scope.movie.rating,
+                year: $scope.movie.year,
+                plot: $scope.movie.plot
+            };
+            $scope.movies.push(newMovie);
+        }
+        $scope.removeMovie = function (movie) {
+            var index = $scope.movies.indexOf(movie);
+            $scope.movies.splice(index, 1);
+        }
+        $scope.selectMovie = function (movie) {
+            $scope.movie = movie;
+        }
+        $scope.updateMovie = function () {
+            alert($scope.movie.title);
+        }
+    });
+            </pre>
+            <p>Whenever the user clicks on any button (add/remove/update/edit) the corresponding action is invoked. We have updateMovie(), addMovie(), selectMovie(movie), removeMovie(movie) defined in the controller which are called for their corresponding action and update the page content dynamically. </p>
+        </div>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/AngularLibrary.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/js/MoviesApp.js" target="_blank">JS Source</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

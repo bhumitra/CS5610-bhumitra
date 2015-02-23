@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular - Getting Started</title>
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+    <script src="../../js/angular.min.js"></script>
+    <script src="js/angularhello.js"></script>
+</head>
+<body ng-app="AngularHelloApp" class="container">
+    <div ng-controller="AngularHelloController">
+        <h1>Angular JS getting started</h1>
+        <h2>In this experiment we create a simple angular controller to create dynamic content web pages</h2>
+
+        <table>
+            <tr ng-repeat="e in employees">
+                <td>{{e.first}}</td>
+                <td>{{e.last}}</td>
+            </tr>
+        </table>
+
+        <input ng-model="employee.first" />
+
+        <p>
+            {{employee.first}}
+            {{employee.last}}
+        </p>
+        <b><p>Type some text in the text box. As you type the text it gets displayed on the page dynamically. The textbox is bound to the page content by the controller.</p></b>
+        <input ng-model="hello" />
+        {{hello}}
+        <br />
+        
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+        {{goodbye}}
+    </div>
+    <div>
+        <h1>Other Content</h1>
+       
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+    </div>
+    <hr />
+    <h3>How it is done?</h3>
+    <div>
+        <p>  
+        <pre>
+        &lt;input ng-model=&quot;hello&quot; /&gt;
+        {{hello}}
+        </pre> Above code binds the input box to {hello} which can change dynamically. So as the content of text box changes, content also changes
+            <p>Below is the code how I created the AngularHelloApp controller.</p>
+        <pre>
+        
+        var app = angular.module("AngularHelloApp", []);
+        app.controller("AngularHelloController",
+        function ($scope) {
+        
+        var employee = {
+        first: "Alice",
+        last: "Wonderland"
+        };
+        $scope.employee = employee;
+        var employees = [
+        { first: "Bhumitra", last: "Nagar" },
+        { first: "Jose", last: "Annunziato" },
+        ];
+        $scope.employees = employees;
+        $scope.hello = "Hello From Angular JS";
+        $scope.goodbye = "Bye From Angular JS";
+        console.log("AngularHelloController");
+        });
+        </pre>
+
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/AngularHello.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/js/angularhello.js" target="_blank">JS Source</a>
+        </p>
+
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Event Handling</title>
+
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+
+    <script src="../../js/angular.min.js"></script>
+    <script src="js/AngularEvents.js"></script>
+</head>
+<body ng-app="AngularEvents">
+    <div class="container">
+        <h1> Angular Event Handling </h1>
+        <h3> In this experiment we learn how the event handling is done by Angular.  Click on any of the images below and see the text below changes accordingly</h3>
+        <br />
+        <br />
+
+        <div ng-controller="EventsController">
+            <div class="container">
+                <div class="col-sm-3">
+                    <img ng-click="taj()" src="../../images/Pictures/taj.jpg" width="150" height="200" />
+                </div>
+
+                <div class="col-sm-3">
+                    <img ng-click="christ()" src="../../images/Pictures/christ.jpg" width="150" height="200" />
+                </div>
+
+                <div class="col-sm-3">
+                    <img ng-click="pisa()" src="../../images/Pictures/tower.jpg" width="150" height="200" />
+                </div>
+
+                <div class="col-sm-3">
+                    <img ng-click="eifel()" src="../../images/Pictures/eifel.jpg"  width="150" height="200" />
+                </div>
+
+            </div>
+
+            <br />
+            <br />
+
+
+            <div class="container">
+
+                <div class="col-sm-3">
+                </div>
+
+                <div class="col-sm-7">
+                    <h3>{{LocationDetails}}</h3>
+                </div>
+
+                <div class="col-sm-2">
+                </div>
+            </div>
+        </div>
+        <div class="page-header">
+            <h3>How it is done</h3>
+        </div>
+        <div>
+            <p>The event handling is acheived by the directive "ng-click". Whenever you click on an image appropriate function is called and the content is changed on the page</p>
+            <pre>
+             &lt;img ng-click=&quot;taj()&quot; src=&quot;../../images/Pictures/taj.jpg&quot; width=&quot;150&quot; height=&quot;200&quot; /&gt;
+            </pre>
+            <p>The controller code is given below:
+            <pre>
+var app = angular.module("AngularEvents", []);
+app.controller("EventsController",
+function ($scope) {
+    $scope.LocationDetails = "Place to visit around the world. This text will change on clicking the image above"
+    $scope.taj = function () {
+        console.log("Taj Mahal");
+        $scope.LocationDetails = "Taj Mahal at Agra, India"
+    }
+    $scope.christ = function () {
+        console.log("Christ the Redeemer");
+        $scope.LocationDetails = "Christ the Redeemer, Rio De Janeiro"
+    }
+    $scope.pisa = function () {
+        console.log("Leaning tower of pisa");
+        $scope.LocationDetails = "Leaning tower of Pisa, Italy"
+    }
+    $scope.eifel = function () {
+        console.log("Tower");
+        $scope.LocationDetails = "Eiffel Tower in Paris"
+    }
+});
+            </pre>
+            </p>
+        </div>
+
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/AngularEvents.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/js/AngularEvents.js" target="_blank">JS Source</a>
+        </p>
+
+    </div>
+
+</body>
+</html>
