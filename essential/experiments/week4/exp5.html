@@ -150,7 +150,61 @@
         <div class="page-header">
             <h4>Check out the source code below to see how everything is implemented</h4>
         </div>
-        <p>
+        <p>The function below implements sliding text upwards using jQuery. </p>
+
+        
+    <pre>
+          $(function () {
+            $("#button").click(function () {
+                $("#p1").css("color", "green").slideUp(500);
+                $("#panel").css("color", "red")
+            });
+            $("#button1").click(function () {
+                $("#anim").animate({ left: '300px' });
+            });
+        });
+</pre>
+            <p>The time is implemeted by the below function showtime:</p>
+            <pre>
+        function showTime() {
+            var today = new Date();
+            var hh = today.getHours();
+            var mm = today.getMinutes();
+            var ss = today.getSeconds();
+            hh = checkTime(hh);
+            mm = checkTime(mm);
+            ss = checkTime(ss);
+            $("#clock").text(hh + ":" + mm + ":" + ss);
+            t = setTimeout('showTime()', 1000);
+        }
+        function checkTime(j) {
+            if (j < 10) {
+                j = "0" + j;
+            }
+            return j;
+        }
+
+
+</pre>
+            <p>To implement the hover effect the below code is run.</p>
+            <pre>
+        (function () {
+            function initialize() {
+                $(".dropdown").hover(
+                    function () {
+                        $(this).children(".submenu").slideDown(200);
+                    },
+                    function () {
+                        $(this).children(".submenu").slideUp(200);
+                    });
+            }
+            $(initialize);
+        })();
+
+
+</pre>
+
+
             <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week4/exp5.html" target="_blank">Source Code</a>
         </p>
     

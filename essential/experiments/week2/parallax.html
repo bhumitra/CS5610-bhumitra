@@ -63,7 +63,26 @@
         <div>
             <p> Check out the source code to see the implementation for the parallax scrolling. The background images remain fixed to their position and do not move during scrolling thus creating a parallax effect.</p>
         </div>
+        <pre>
+            #scroll {
+            width: 500px;
+            height: 190px;
+            margin: 100px auto;
+            background: green;
+            border: 2px solid #000;
+            overflow: auto;
+            white-space: nowrap;
+            box-shadow: 0 0 10px #000;
+        }
+        [class*="bg_"] {
+            height: 95vh;
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: cover;
+            background-origin: border-box;
+        }
 
+</pre>
         <p>
             <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week2/parallax.html" target="_blank">Source Code</a>
         </p>

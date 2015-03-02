@@ -122,7 +122,34 @@
         </div>
         <br />
 
-        <p>Check out the source code below for the implementation of each of the functionalities demonstrated in this page</p>
+        <p>Check out the source code below for the implementation of each of the functionalities demonstrated in this page. Calling css selectors using jquery.</p>
+        <pre>
+         $(function () {
+            $("h4").html("This text is written via jquery");
+            $(".selec").selectable();
+            $(".drag").draggable();
+            $(".resize").resizable();
+            $(".sort").sortable();
+            $(".accordion").accordion();
+        });
+
+        The selectors in the CSS file are:
+        .label1.ui-selected {
+            background: red;
+        }
+        .label2.ui-selected {
+            background: yellow;
+        }
+        .label3.ui-selected {
+            background: blue;
+        }
+        .resize {
+            width: 200px;
+            height: 150px;
+            background-color: lightyellow;
+            border: groove;
+        }
+</pre>
         <p>
             <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week4/jqueryExplore.html" target="_blank">Source Code</a>
         </p>

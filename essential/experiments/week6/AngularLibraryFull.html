@@ -1,0 +1,164 @@
+﻿﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Movie Library</title>
+    <script src="../../js/angular.min.js"></script>
+    <script src="js/MoviesApp3.js"></script>
+    <link href="../../../css/bootstrap.css" rel="stylesheet" />
+    <style>
+        .poster {
+            float: left;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body ng-app="MoviesApp">
+    <div ng-controller="MovieController" class="container">
+        <h1>Movie Library</h1>
+        <h4>
+            This is an implementation of the movie library. This is an extention of last week's Movie Library experiment. We have added the add to favourites feature and to get details of the favourite movie. Here, the data is fetched as an JSON object from an API. Type the name of a movie and hit search and wait for a few seconds.
+            When you hit search, searchMovies() is called. The data is fetched and populated into the table below. All previous functionalities of add/remove/update movies remain same.
+        </h4>
+        <div ng-show="details">
+            <h2>Details</h2>
+            <div class="row">
+                <div class="col-sm-4">
+                    <img ng-src="{{details.urlPoster}}" />
+                </div>
+                <div class="col-sm-8" style="color:darkgoldenrod">
+                    {{details.rated}}
+                    {{details.year}}
+
+                    <span>Languages:</span>
+                    <ul>
+                        <li ng-repeat="language in details.languages">{{language}}</li>
+                    </ul>
+                    Genres:
+                    <ul>
+                        <li ng-repeat="genre in details.genres">{{genre}}</li>
+                    </ul>
+
+                    <p>
+                        {{details.plot}}
+                    </p>
+                </div>
+            </div>
+            <h3>{{details.title}}</h3>
+
+        </div>
+
+        <div ng-show="favoriteMovies.length > 0">
+            <h2>Favorite Movies</h2>
+
+            <table class="table table-striped">
+                <tbody>
+                    <tr ng-repeat="movie in favoriteMovies">
+                        <td>{{movie.title}}</td>
+                        <td>{{movie.year}}</td>
+                        <td>{{movie.rating}}</td>
+                        <td>
+                            <img class="poster" ng-src="{{movie.urlPoster}}" width="50" />
+                            {{movie.plot}}
+                        </td>
+                        <td>
+                            <button ng-click="removeFavoriteMovie(movie)" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <button ng-click="detailsMovie(movie)" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2>Search Movies</h2>
+        <div class="input-group">
+            <input type="text" ng-model="searchByTitle" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+                <button ng-click="searchMovies()" class="btn btn-default" type="button">Go!</button>
+            </span>
+        </div><!-- /input-group -->
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Rating</th>
+                    <th>Plot</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr>
+                    <th><input ng-model="movie.title" class="form-control" /></th>
+                    <th><input ng-model="movie.year" class="form-control" /></th>
+                    <th><input ng-model="movie.rating" class="form-control" /></th>
+                    <th><input ng-model="movie.plot" class="form-control" /></th>
+                    <th>
+                        <button ng-click="updateMovie()" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                        <button ng-click="addMovie()" class="btn btn-success">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="movie in movies">
+                    <td>{{movie.title}}</td>
+                    <td>{{movie.year}}</td>
+                    <td>{{movie.rating}}</td>
+                    <td>
+                        <img class="poster" ng-src="{{movie.urlPoster}}" width="50" />
+                        {{movie.plot}}
+                    </td>
+                    <td>
+                        <button ng-click="selectMovie(movie)" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button ng-click="removeMovie(movie)" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        <button ng-click="addToFavorites(movie)" class="btn btn-info">
+                            <span class="glyphicon glyphicon-star"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4> How it is done?</h4>
+        <div>
+            <p>We have functions addToFavourites and removeFavouriteMovie that take in the movie object and add or remove this object from the list of Favouritemovies[]. </p>
+             <p>The function detailsMovie uses the movie object and gets the details of it from the api. See the comments in green below</p>
+     <pre>
+        $scope.detailsMovie = function (movie) {
+        <b style="color:green">//getting details of the movie from the api. idIMDB present in the current object is used in the url below </b>
+        $http.jsonp("http://www.myapifilms.com/imdb?format=JSONP&idIMDB=" + movie.idIMDB + "&callback=JSON_CALLBACK")
+        .success(function (movie) {
+        $scope.details = movie;
+        });
+        }
+         <b style="color:green">//declaring list where we will store favourite movie</b>
+        $scope.favoriteMovies = [];
+         <b style="color:green"> //invoked when a user clicks add to favourites.</b>
+        $scope.addToFavorites = function (movie) {
+        $scope.favoriteMovies.push(movie);
+        }
+         <b style="color:green">//invoked when a user clicks remove from favourites button</b>
+        $scope.removeFavoriteMovie = function (movie) {
+        var index = $scope.favoriteMovies.indexOf(movie);
+        $scope.favoriteMovies.splice(index, 1);
+        }
+</pre>
+            </div>
+
+            <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/AngularLibraryExt.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/js/MoviesApp2.js" target="_blank">JS Source</a>
+        </p>
+
+        </div>
+
+</body>
+</html>
