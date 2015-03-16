@@ -1,0 +1,64 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    
+    <title>Node js setup</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="jumbotron">
+    <h1> Introduction to Nodejs</h1>
+        <p>Node.js® is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices. We can run javascript on desktop instead of a browser using nodejs.</p>
+        </div>
+        <p><b>Installation steps on how to use Nodejs</b></p>
+        <ul>
+            <li>Install node js from its website - <a href="http://nodejs.org">Nodejs</a>. Click on install and run the downloaded setup.</li>
+            <li>In the environment variables, edit the path. It should be "C:\Program Files\nodejs". Remember there should be no \ after nodejs in the path or else it wont work.(it was so in my case)</li>
+            <li>create a directory anywhere in your computer. Create a file nodehello.js</li>
+            <li>type "console.log("node hello")" in that file and save it</li>
+            <li>Open power shell</li>
+            <li>Navigate to the path where file is created</li>
+            <li>Run this command on the powershell 
+            <code>> node .\nodehello.js</></code></li>
+            <li>Output should be "node hello" on the console</li>
+            
+        </ul>
+
+        <h3>Now install "express"framework using the node package manager</h3>
+        <ul>
+            <li>Run the following code in the powershell: <code>> npm install express</code></li>
+            <li>
+                Create a file serverApp.js in the working directory with the following code
+                <pre>
+                var express = require('express')
+                var app = express()
+                app.get('/', function (req, res) {
+                res.send('Hello World')
+                })
+                app.listen(3000)
+                </pre>
+                This will create a server app. Whenever a request comes, our app is listening for incoming url's the response "Hello World" sent back. 
+            </li>
+            <li>
+                Run this command on the powershell to start the server app we created.
+                <code>> node .\serverApp.js</></code>
+            </li>
+            <li>Our server is listening at port 3000. So got to "localhost:3000" on the browser. You will see the Hello World on the browser which our server app has returned.</li>           
+        </ul>
+                <p>Here is the source code</p>
+                <p>
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week7/nodehello.html" target="_blank">HTML Source</a> || 
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week7/nodehello.js" target="_blank">nodehello JS Source</a> ||
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week7/serverApp.js" target="_blank">serverApp JS Source</a>
+                </p>
+    </div>
+
+</body>
+
+</html>

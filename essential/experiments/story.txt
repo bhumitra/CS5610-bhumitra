@@ -4,4 +4,6 @@
 ../story/index.htm?../experiments/week3/story.txt		Week 3 -- CSS & Bootstrap
 ../story/index.htm?../experiments/week4/story.txt		Week 4 -- JavaScript & JQuery
 ../story/index.htm?../experiments/week5/story.txt		Week 5 -- AngularJS
-../story/index.htm?../experiments/week6/story.txt		Week 6 -- AngularJS Continued...
+../story/index.htm?../experiments/week6/story.txt		Week 6 -- RECAP -- Angular, Jquery, CSS
+../story/index.htm?../experiments/week7/story.txt		Week 7 -- Node.js
+
