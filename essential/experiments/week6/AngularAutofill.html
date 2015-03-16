@@ -17,6 +17,7 @@
 
     <div ng-controller="TestCtrl">
         <form id="form" role="form">
+            <h2>Implementation of autocomplete using Angular</h2>
             <div class="form-group move-down">
                 <label for="Autocomplete">Autocomplete -- Places around the world </label>
                 <input type="text" id="Autocomplete" class="form-control"  ng-autocomplete="result1"  />
@@ -33,7 +34,7 @@
     <hr />
     <h3>How it is done?</h3>
     <div>
-        <p>We fetch the results </p>
+        <p>The implementation of the autocomplete is done using the google maps api. The places search is bound by "scope.details = scope.gPlace.getPlace();" and the country search is bound by "country: scope.options.country". Rest of the js is given below. You can change the country for searching in the script.js file</p>
         
         <pre>
    angular.module("ngAutocomplete", [])
@@ -97,8 +98,9 @@
         </pre>
 
         <p>
-            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/AngularHello.html" target="_blank">HTML Source</a> ||
-            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/js/angularhello.js" target="_blank">JS Source</a>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week6/AngularAutofill.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week6/js/ngAutocomplete.js" target="_blank">JS Source 1</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week6/js/script.js" target="_blank">JS Source 2</a>
         </p>
 
     </div>

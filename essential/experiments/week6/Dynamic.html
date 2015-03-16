@@ -1,0 +1,104 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dynamic filtering using Angular</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="container">
+        <div ng-controller="FilterDataModelController">
+
+            <div class="container">
+                <h1>Dynamic filtering using Angular</h1>
+
+                <p>Type something in the below search box and see the change in the values displayed below. This is done dynamically by Angular</p>
+                <form class="form-signin">
+                    <input type="text" class="form-control" placeholder="Search Criteria" ng-model="nameText">
+                    <ul>
+                        <li ng-repeat="player in players | filter:nameText ">
+                            {{player.name}} - {{player.club}}
+                        </li>
+                    </ul>
+
+                </form>
+
+                <hr />
+                <h2>How it is done</h2>
+                <p>
+                    We can use dynamic filtering using angular by the fillowing peice of code. We have predefined values and when a user
+                    types something in the search box, only those results are shown which contain the string typed by the user. (using the search functionality of angular)
+                </p>
+
+                    <pre>
+                        function FilterDataModelController($scope) {
+                        var player1 = {
+                        name: "Ronaldo",
+                        club: "Real Madrid"
+                        };
+
+                        var player2 = {
+                        name: "Messi",
+                        club: "Barcelona"
+                        };
+
+                        var player3 = {
+                        name: "Ribery",
+                        club: "Bayern Munich"
+                        };
+
+                        var players = [player1, player2, player3];
+                        $scope.players = players;
+                        }
+                    </pre>
+     
+
+                <hr />
+                <p>Here is the source code</p>
+                <p>
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week6/Dynamic.html" target="_blank">HTML Source</a>
+                
+                </p>
+               
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script>
+
+
+        function FilterDataModelController($scope) {
+            var player1 = {
+                name: "Ronaldo",
+                club: "Real Madrid"
+            };
+
+            var player2 = {
+                name: "Messi",
+                club: "Barcelona"
+            };
+
+            var player3 = {
+                name: "Ribery",
+                club: "Bayern Munich"
+            };
+
+            var players = [player1, player2, player3];
+            $scope.players = players;
+        }
+    </script>
+</body>
+
+</html>

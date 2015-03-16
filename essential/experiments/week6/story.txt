@@ -1,6 +1,6 @@
-﻿../../story/whatisnext.htm?../experiments/week5/story.txt			What is Next?
-../week5/AngularHello.html				AngularJS - Hello World
-../week5/AngularEvents.html				AngularJS - Event Handling
-../week5/AngularValidations.html		AngularJS - Validations
-../week5/AngularLibrary.html			AngularJS - Movie Library
-../week5/AngularLibraryext.html			AngularJS - Movie Library search with API
+﻿../../story/whatisnext.htm?../experiments/week6/story.txt			What is Next?
+../week6/AngularLibraryFull.html		AngularJS - Library Full
+../week6/AngularAutofill.html			AngularJS - Auto Complete
+../week6/redesignHome.html				Redesigning the home page
+../week6/Dynamic.html					AngularJS dynamic filtering
+../week6/Blurr.html						Blurr Effect
