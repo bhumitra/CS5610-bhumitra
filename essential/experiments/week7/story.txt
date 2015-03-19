@@ -1,2 +1,6 @@
 ﻿../../story/whatisnext.htm?../experiments/week7/story.txt			What is Next?
 ../week7/Nodehello.html		Node.JS - Setup
+../week7/		Node.JS - 2
+../week7/		Node.JS - 3
+../week7/.html		Node.JS - 4
+../week7/.html		Node.JS - 5
