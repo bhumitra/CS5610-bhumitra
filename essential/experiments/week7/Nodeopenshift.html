@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Deploying on Openshift</title>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Deploying the local application on openshift</h1>
+            <hr />
+        </div>
+        <h2>Below are the following steps to deploy our application on the openshift server. </h2>
+        <ul>
+            <li>We already have node js installed</li>
+            <li>Follow the steps mentioned on the Openshift webpage that illustrate how to configure openshift on your machine. Here is the link for that : <a href="https://developers.openshift.com/en/getting-started-overview.html">OpenShift</a></li>
+            <li>Once you have installed the client tools(ruby, git and rhc) and created nodejs applicationin your openshift account with the public key, you need to clone the repository to local</li>
+            <li>Clone the application to local machine using the url of the source folder mentioned in the openshift account. </li>
+            <li>Now we will use our own server that we created in the previous experiment by replacing the contents of server.js with this:</li>
+            <li>
+                <pre>
+var express = require('express');
+var app = express();
+app.get('/', function (req, res) {
+    res.send('hello world');
+});
+var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+app.listen(port,ip);
+                </pre>
+                We have modified the above code by adding variables ip and port so that it recognises where it is deployed -- Local or on the server which specify on which port to listen depending on the place where this is deployed.
+            </li>
+
+            <li>Commit and push this to the repository</li>
+            <li>Now when you click on your application on openshift you should see the output as <code>"hello world"</code></li>
+            <li> Here is the link to the deployed application -- <a href="http://webdevcs5610-bhumitra.rhcloud.com/">http://webdevcs5610-bhumitra.rhcloud.com/</a>
+
+        </ul>
+
+        <hr />
+        <h3>Source Code</h3>
+        <ul>
+            <li>
+                <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week7/nodeopenshift.html" target="_blank">Source</a>
+            </li>
+
+        </ul>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=WGnQAgk2dz4" target="_blank">Professor's Video</a></li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

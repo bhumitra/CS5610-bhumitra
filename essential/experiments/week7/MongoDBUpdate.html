@@ -1,0 +1,130 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    
+    <title>MongoDB -- Operations</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="jumbotron">
+    <h1> MongoDB - Remove and Update </h1>
+        <p>
+          We will learn how to perform remove and update operations on mongoDB
+        </p>
+      
+        </div>
+      <hr />
+        <h3>Current Data in the database</h3>
+<pre>
+> db.developer.find().pretty()
+{
+        "_id" : ObjectId("550e7bbef65d61f3c00916f1"),
+        "first" : "Bhumitra",
+        "Last" : "Nagar"
+}
+{
+        "_id" : ObjectId("550e7c3ef65d61f3c00916f2"),
+        "first" : "Arushi",
+        "Last" : "Gangrade"
+}
+{
+        "_id" : ObjectId("550e7c73f65d61f3c00916f3"),
+        "first" : "Apple",
+        "Last" : "Google"
+}
+{
+        "_id" : ObjectId("550e7f1df65d61f3c00916f4"),
+        "first" : "Apple",
+        "Last" : "Google2"
+}
+{
+        "_id" : ObjectId("550e7f21f65d61f3c00916f5"),
+        "first" : "Apple",
+        "Last" : "Google"
+}
+
+</pre>
+
+<h3>Removing the data with Last name Google2</h3>
+<pre> 
+> db.developer.remove({Last: 'Google2'})
+WriteResult({ "nRemoved" : 1 })
+</pre>
+
+<hr />
+<h3>Updating the record with last as Google and setting the first for it as Apple2 </h3>
+        <pre>
+> db.developer.update({Last: 'Google'},{$set:{first: 'Apple2'}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.developer.find().pretty()
+{
+        "_id" : ObjectId("550e7bbef65d61f3c00916f1"),
+        "first" : "Bhumitra",
+        "Last" : "Nagar"
+}
+{
+        "_id" : ObjectId("550e7c3ef65d61f3c00916f2"),
+        "first" : "Arushi",
+        "Last" : "Gangrade"
+}
+{ "_id" : ObjectId("550e7c73f65d61f3c00916f3"), "Last" : "Google2" }
+{
+        "_id" : ObjectId("550e7f21f65d61f3c00916f5"),
+        "first" : "Apple2",
+        "Last" : "Google"
+}
+</pre>
+<hr />
+<h3>Adding extra fields to a records with update -- Here we add the field "type" to the record with Last as Google and setting the first and Type for it</h3>
+        <pre>
+> db.developer.update({Last: 'Google'},{$set:{first: 'Apple2',type:'company'}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.developer.find().pretty()
+{
+        "_id" : ObjectId("550e7bbef65d61f3c00916f1"),
+        "first" : "Bhumitra",
+        "Last" : "Nagar"
+}
+{
+        "_id" : ObjectId("550e7c3ef65d61f3c00916f2"),
+        "first" : "Arushi",
+        "Last" : "Gangrade"
+}
+{ "_id" : ObjectId("550e7c73f65d61f3c00916f3"), "Last" : "Google2" }
+{
+        "_id" : ObjectId("550e7f21f65d61f3c00916f5"),
+        "first" : "Apple2",
+        "Last" : "Google",
+        "type" : "company"
+}
+>
+
+</pre>
+
+<hr />
+
+
+
+        <p>Here is the source code</p>
+                <p>
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week7/MongoDBUpdate.html" target="_blank">HTML Source</a>
+                </p>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=YH5sFprHgl0" target="_blank">Professor's Video</a></li>
+                <li><a href=" http://en.wikipedia.org/wiki/MongoDB" target="_blank">Wikipedia - MongoDB</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

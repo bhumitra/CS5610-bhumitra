@@ -1,0 +1,123 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    
+    <title>MongoDB -- Getting Started</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="jumbotron">
+    <h1> MongoDB - Insert and Find </h1>
+        <p>
+          We will learn how to perform insert and find operations on mongoDB
+        </p>
+      
+        </div>
+      <hr />
+        <h3>Connecting to DB</h3>
+<pre>
+> show dbs
+local  0.078GB
+> use cs5610
+switched to db cs5610
+>
+>
+> show collections
+> db.developer
+cs5610.developer
+
+</pre>
+
+<h3>Insert Json object into the database using the following command</h3>
+<pre> 
+
+> db.developer.insert({first: 'Bhumitra', Last: 'Nagar'})
+WriteResult({ "nInserted" : 1 })
+>
+</pre>
+<hr />
+<h3>Finding data in the database -- equivalent to select *</h3>
+        <pre>
+> db.developer.find()
+{ "_id" : ObjectId("550e7bbef65d61f3c00916f1"), "first" : "Bhumitra", "Last" : "Nagar" }
+> db.developer.insert({first: 'Arushi', Last: 'Gangrade'})
+WriteResult({ "nInserted" : 1 })
+> db.developer.find()
+{ "_id" : ObjectId("550e7bbef65d61f3c00916f1"), "first" : "Bhumitra", "Last" : "Nagar" }
+{ "_id" : ObjectId("550e7c3ef65d61f3c00916f2"), "first" : "Arushi", "Last" : "Gangrade" }
+</pre>
+<hr />
+<h3>Inserting more records into the database</h3>
+        <pre>
+> db.developer.insert({first: 'Apple', Last: 'Google'})
+WriteResult({ "nInserted" : 1 })
+>
+</pre>
+<pre>
+> db.developer.find()
+{ "_id" : ObjectId("550e7bbef65d61f3c00916f1"), "first" : "Bhumitra", "Last" : "Nagar" }
+{ "_id" : ObjectId("550e7c3ef65d61f3c00916f2"), "first" : "Arushi", "Last" : "Gangrade" }
+{ "_id" : ObjectId("550e7c73f65d61f3c00916f3"), "first" : "Apple", "Last" : "Google" }
+>
+</pre>
+
+
+<hr />
+        <h3>Showing the inserted data into readable format</h3>
+<pre>
+> db.developer.find().pretty()
+{
+        "_id" : ObjectId("550e7bbef65d61f3c00916f1"),
+        "first" : "Bhumitra",
+        "Last" : "Nagar"
+}
+{
+        "_id" : ObjectId("550e7c3ef65d61f3c00916f2"),
+        "first" : "Arushi",
+        "Last" : "Gangrade"
+}
+{
+        "_id" : ObjectId("550e7c73f65d61f3c00916f3"),
+        "first" : "Apple",
+        "Last" : "Google"
+}
+
+</pre>
+
+<h3>Finding the data according to the given first name.</h3>
+<pre>
+> db.developer.find({first:'Bhumitra'}).pretty()
+{
+        "_id" : ObjectId("550e7bbef65d61f3c00916f1"),
+        "first" : "Bhumitra",
+        "Last" : "Nagar"
+}
+
+
+</pre>
+
+        <hr />
+
+        <p>Here is the source code</p>
+                <p>
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week7/MongoDBInsert.html" target="_blank">HTML Source</a>
+                </p>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=YH5sFprHgl0" target="_blank">Professor's Video</a></li>
+                <li><a href=" http://en.wikipedia.org/wiki/MongoDB" target="_blank">Wikipedia - MongoDB</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

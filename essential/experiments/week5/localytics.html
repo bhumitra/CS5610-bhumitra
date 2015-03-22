@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Localytics</title>
+    <script src="../../js/angular.min.js"></script>
+    <script src="js/localyticsApp.js"></script>
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+</head>
+<body ng-app="localyticsApp">
+    <div ng-controller="localyticsController" class="container">
+      
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>NUmber 1</th>
+                    <th>Number 2</th>
+                    <th>Sum</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr>
+                    <th><input type="text" ng-model="num1"> + </th>
+                    <th><input type="text" ng-model="num2"> = </th>
+                    <th><input type="button" ng-click="add(num1,num2)" value="ADD"></th>
+                    <th><input type="text" ng-model="result"></th>
+                </tr>
+            </thead>
+          
+        </table>
+        <hr />
+        <h4> How it is done?</h4>
+      
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/AngularLibrary.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/js/MoviesApp.js" target="_blank">JS Source</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

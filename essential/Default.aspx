@@ -111,7 +111,7 @@
                 
                 <hr />
 
-                <img height="300" width="400" src="images/Pictures/me.jpg" style="vertical-align: middle" />
+                <img height="300" width="400" src="images/Pictures/me.jpg" style="border-radius: 50%; max-width: 100%;"/>
 
                 <h2>BHUMITRA NAGAR </h2>
                 <p class="text">
