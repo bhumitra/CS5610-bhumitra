@@ -1,0 +1,83 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    
+    <title>MongoDB -- Advanced</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="jumbotron">
+    <h1> MongoDB - Insert and Find </h1>
+        <p>
+          We will connect to the database using Mongoose and creae a schema in it. Then we will add an object form2 to it. 
+        </p>
+      
+        </div>
+      <hr />
+        <h3>Below is the code for the server1.js file. We connect to the database using "mongoose.connect('mongodb://localhost/cs5610')" </h3>
+<pre>
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/cs5610');
+
+//create schema -- fields and types
+var FormSchema = new mongoose.Schema({
+    name: String,
+    created: {type: Date, default: Date.now}
+}, {collection : 'form'});
+
+//datamodel created from schema to create a new form
+//allows us to interact with database
+//collection -- find insert update delete only which match schema
+//equivalent to entity manager in java
+var Form = mongoose.model("Form", FormSchema);
+
+//new object form form to insert data.. should be same as schema
+var form2 = new Form({ name: "form2", created: new Date() });
+
+form2.save();
+</pre>
+<p>Now once this is run, node .\server1.js , This creates a new Collection in the database with the name form. On querying the inserted record in the datbase we get the following.</p>
+<p>This is how data can be inserted into the mongoDB using mongoose and Nodejs</p>
+
+        <pre>
+> db.form.find().pretty()
+{
+        "_id" : ObjectId("550e86fa2f0ae1702e2ecb5a"),
+        "name" : "form1",
+        "created" : ISODate("2015-03-22T09:10:18.529Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("550e8805cb08d584122b5329"),
+        "name" : "form2",
+        "created" : ISODate("2015-03-22T09:14:45.409Z"),
+        "__v" : 0
+}
+</pre>
+
+        <hr />
+
+        <p>Here is the source code</p>
+                <p>
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week8/MongoDBAdv.html" target="_blank">HTML Source</a> ||
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week8/server1.js" target="_blank">Java Script file</a>
+                </p>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=YH5sFprHgl0" target="_blank">Professor's Video</a></li>
+                <li><a href=" http://en.wikipedia.org/wiki/MongoDB" target="_blank">Wikipedia - MongoDB</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

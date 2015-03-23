@@ -1,0 +1,96 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    
+    <title>MongoDB -- Advanced</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="jumbotron">
+    <h1> MongoDB - Retrieving the Data from database </h1>
+        <p>
+          Retrieving the data from mondoDB so that it can be used with frontend (Angular)
+        </p>
+      
+        </div>
+      <hr />
+        <h3>Retrieving the data can be done in two ways, Either retrieving all the records stored or selectively.</h3>
+        <p>We use either Form.find(getData); or Form.findById("550e86fa2f0ae1702e2ecb5a", function (err, data) {....}) for the above two operations respectively. Form.Find() returns the data as an array of objects in the database </p>
+<pre>
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/cs5610');
+//create schema -- fields and types
+var FormSchema = new mongoose.Schema({
+    name: String,
+    created: {type: Date, default: Date.now}
+}, {collection : 'form'});
+
+//datamodel created from schema to create a new form
+//allows us to interact with database
+//collection -- find insert update delete only which match schema
+//equivalent to entity manager in java
+var Form = mongoose.model("Form", FormSchema);
+
+//to recieve and update the data
+Form.find(getData);
+function getData(err, data) {
+    console.log(err);
+    console.log(data);
+}
+
+Form.findById("550e86fa2f0ae1702e2ecb5a", function (err, data) {
+    data.name = "Form update 123";
+    data.save();
+    console.log(err);
+    console.log(data);
+});
+</pre>
+<p>Now once this is run, node .\server1.js , This gives the output on the console as --</p>
+
+        <pre>
+//arrray of objects returned by Find()
+null
+[ { _id: 550e86fa2f0ae1702e2ecb5a,
+    name: 'form1',
+    __v: 0,
+    created: Sun Mar 22 2015 05:10:18 GMT-0400 (Eastern Daylight Time) },
+  { _id: 550e8805cb08d584122b5329,
+    name: 'form2',
+    __v: 0,
+    created: Sun Mar 22 2015 05:14:45 GMT-0400 (Eastern Daylight Time) } ]
+
+// single value returned by FindById
+
+null
+{ _id: 550e86fa2f0ae1702e2ecb5a,
+  name: 'form1',
+  __v: 0,
+  created: Sun Mar 22 2015 05:10:18 GMT-0400 (Eastern Daylight Time) }
+</pre>
+
+        <hr />
+
+        <p>Here is the source code</p>
+                <p>
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week8/MongoDBAdv2.html" target="_blank">HTML Source</a> ||
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week8/server2.js" target="_blank">Java Script file</a>
+                </p>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=YH5sFprHgl0" target="_blank">Professor's Video</a></li>
+                <li><a href=" http://en.wikipedia.org/wiki/MongoDB" target="_blank">Wikipedia - MongoDB</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

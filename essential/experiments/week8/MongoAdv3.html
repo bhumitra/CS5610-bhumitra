@@ -1,0 +1,86 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    
+    <title>MongoDB -- Advanced</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="jumbotron">
+    <h1> MongoDB - Using express and mongoose together </h1>
+        <p>
+          Retrieving the data from mondoDB and displaying it on the given URL
+        </p>
+      
+        </div>
+      <hr />
+        <h3>We use the same functions find() and findById to retrieve the data from the database. This time, We can use the data returned as a JSON and display it on the requested URL. Below is the content of the server file</h3>
+        
+<pre>
+var express = require('express');
+var app = express();
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/cs5610');
+//create schema -- fields and types
+var FormSchema = new mongoose.Schema({
+    name: String,
+    created: {type: Date, default: Date.now}
+}, {collection : 'form'});
+//datamodel created from schema to create a new form
+//allows us to interact with database
+//collection -- find insert update delete only which match schema
+//equivalent to entity manager in java
+var Form = mongoose.model("Form", FormSchema);
+//to recieve the data
+Form.find(getData);
+function getData(err, data) {
+    console.log(err);
+    console.log(data);
+}
+
+//get the data from db and send response back to the node server
+app.get('/api/form', function (req, res) {
+    Form.find(function (err, data) {
+        res.json(data);
+    });
+});
+
+
+app.get('/api/form/:id', function (req, res) {
+    Form.findById(req.params.id, function (err, data) {
+        res.json(data);
+    });
+}); 
+//var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+//var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+//app.listen(port, ip);
+app.listen(3000);
+</pre>
+
+        <p>The node server is listening on port 3000 for URL of the pattern /api/form. So when we run the server and got to the url "http://localhost:3000/api/form", the data is retrieved from the database by From.find() and response is returned which is displayed on the web page. The response is the array of objects stored in the database. Similarly we can search by id of a particular object as well.</p>
+        <hr />
+
+        <p>Here is the source code</p>
+                <p>
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week8/MongoDBAdv3.html" target="_blank">HTML Source</a> ||
+                    <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week8/server3.js" target="_blank">Java Script file</a>
+                </p>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=YH5sFprHgl0" target="_blank">Professor's Video</a></li>
+                <li><a href=" http://en.wikipedia.org/wiki/MongoDB" target="_blank">Wikipedia - MongoDB</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
