@@ -3,4 +3,4 @@
 ../week8/MongoAdv2.html	MongoDB - Advanced2
 ../week8/MongoAdv3.html	MongoDB - Advanced3
 ../week8/MEANDemo.html	MEAN stack APP
-../week8/Mongoopenshift.html	Setup-- Mongo on OpenShift
+../week8/Mongoopenshift.html	MEAN APP on OpenShift

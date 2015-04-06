@@ -1,0 +1,155 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+#mymenu,
+#mymenu ul,
+#mymenu ul li,
+#mymenu ul li a,
+#mymenu #menu-button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#mymenu:after,
+#mymenu > ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#mymenu #menu-button {
+  display: none;
+}
+#mymenu {
+  width: auto;
+  border: 2px solid blue;
+  border-radius: 2px;
+  font-family: Calibri, sans-serif;
+  line-height: 1;
+  background: black;
+  box-shadow: 1px 1px 0 white, 2px 2px 0 white, 3px 3px 3px rgba(0, 0, 0, 0.35);
+}
+#mymenu > ul {
+ // background: url('images/bg.png');
+ 
+}
+#mymenu > ul > li {
+  float: left;
+}
+#mymenu.align-center > ul {
+  font-size: 0;
+  text-align: center;
+}
+#mymenu.align-center > ul > li {
+  display: inline-block;
+  float: none;
+}
+#mymenu.align-right > ul > li {
+  float: right;
+}
+#mymenu > ul > li > a {
+  padding: 18px 12px;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+}
+#mymenu > ul > li > a:hover,
+#mymenu > ul > li:hover > a,
+#mymenu > ul > li.active > a {
+  color: blue;
+}
+#mymenu #menu-indicator {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  height: 0;
+  width: 0;
+  border: 5px solid transparent;
+  border-bottom-color: blue;
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  -ms-transition: all 0.25s ease-out;
+  -o-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+#mymenu.small-screen {
+  width: 100%;
+}
+#mymenu.small-screen > ul,
+#mymenu.small-screen.align-center > ul {
+  width: 100%;
+  text-align: left;
+}
+#mymenu.small-screen > ul > li,
+#mymenu.small-screen.align-center > ul > li {
+  float: none;
+  display: block;
+  border-top: 1px solid rgba(100, 100, 100, 0.1);
+}
+#mymenu.small-screen > ul > li > a {
+  padding: 18px 25px;
+}
+#mymenu.small-screen > ul > li:after,
+#mymenu.small-screen > ul > li:before {
+  display: none;
+}
+#mymenu.small-screen #menu-button {
+  display: block;
+  padding: 18px 25px;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: blue;
+  background: url('images/bg.png');
+}
+#mymenu.small-screen #menu-button.menu-opened {
+  color: #444444;
+}
+#mymenu.small-screen #menu-button:after {
+  content: "";
+  position: absolute;
+  right: 25px;
+  top: 19.5px;
+  display: block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border-top: 2px solid blue;
+  border-bottom: 2px solid blue;
+  width: 18px;
+  height: 3px;
+}
+#mymenu.small-screen #menu-button.menu-opened:after {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+#mymenu.small-screen #menu-button:before {
+  content: "";
+  position: absolute;
+  right: 25px;
+  top: 29.5px;
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: blue;
+}
+#mymenu.small-screen #menu-button.menu-opened:before {
+  background: #444444;
+}
+#mymenu.small-screen #menu-indicator {
+  display: none;
+}

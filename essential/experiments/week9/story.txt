@@ -1,0 +1,6 @@
+﻿../../story/whatisnext.htm?../experiments/week9/story.txt			What is Next?
+../week9/videobg.html	Video background
+../week9/LandingPage.html	Landing Page
+../week9/LandingPage.html	Coming Soon
+../week9/LandingPage.html	Coming Soon
+../week9/LandingPage.html	Coming Soon

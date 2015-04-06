@@ -1,0 +1,91 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+
+    <title>MEAN</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        video#bgvid {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            background: url(../../Landing/reel.jpg) no-repeat;
+            background-size: cover;
+            opacity: 0.2;
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1> Creating a video background for the landing page for Project - Tickster </h1>
+            <h2>Tickster is a Movie Hub and an Event Booking website</h2>
+            <hr />
+            <h3>Check the landing page here - <a href="../../Landing.html" target="_blank">Landing Page</a></h3>
+        </div>
+        <hr />
+        <h3>While we can’t yet set a video for the background or background-image CSS properties – they can only take bitmaps, SVG images, colors and gradients as values – it is possible to fake the appearance of a background video by forcing it behind other HTML elements. The challenge is to have the video fill the browser window, making it as responsive as background images. </h3>
+        <br />
+        <h3>This can be done by using the following stylesheet, and setting the z-index to -100, so that every other layer is above it.</h3>
+
+<pre>
+        video#bgvid {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            background: url(../../Landing/reel.jpg) no-repeat;
+            background-size: cover;
+            opacity: 0.05;
+        }
+</pre>
+        <h3>And then using the video tag</h3>
+        <pre>
+            &lt;video autoplay=&quot;&quot; loop=&quot;&quot; poster=&quot;../../Landing/reels.jpg&quot; id=&quot;bgvid&quot;&gt;
+            &lt;source src=&quot;../../Landing/reels.webm&quot; type=&quot;video/webm&quot;&gt;
+            &lt;source src=&quot;../../Landing/reels.mp4&quot; type=&quot;video/mp4&quot;&gt;
+            &lt;/video&gt;
+</pre>
+        <video autoplay="" loop="" poster="../../Landing/reels.jpg" id="bgvid">
+            <source src="../../Landing/reels.webm" type="video/webm">
+            <source src="../../Landing/reels.mp4" type="video/mp4">
+        </video>
+        <h3>Hence we have the background set as a video for this page also which is continuously looping. Remember to mute the video when you use it.</h3>
+        <hr />
+
+        <p>Here is the source code</p>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week9/Videobg.html" target="_blank">HTML Source for this page</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/Landing.html" target="_blank">Landing page source code</a>||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/Landing/landing.css" target="_blank">Landing page CSS code</a>
+        </p>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="http://demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video" target="_blank">Demosthenes blog</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

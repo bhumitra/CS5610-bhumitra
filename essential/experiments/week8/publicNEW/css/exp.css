@@ -1,0 +1,172 @@
+﻿
+
+div.color_changed {
+    width: 100px;
+    height: 100px;
+    background: blue;
+    -webkit-animation: color_changed 5s; 
+    animation: color_changed 5s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes color_changed {
+    from {
+        background: blue;
+    }
+
+    to {
+        background: orange;
+    }
+}
+
+/* Standard syntax */
+@keyframes color_changed {
+    from {
+        background: red;
+    }
+
+    to {
+        background: blue;
+    }
+}
+
+div#morecolor {
+    width: 100px;
+    height: 100px;
+    background: blue;
+    -webkit-animation: colorchangedmorecolor 5s; 
+    animation: colorchangedmorecolor 5s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes colorchangedmorecolor {
+    0% {
+        background: red;
+    }
+
+    25% {
+        background: yellow;
+    }
+
+    50% {
+        background: blue;
+    }
+
+    100% {
+        background: green;
+    }
+}
+
+/* Standard syntax */
+@keyframes colorchangedmorecolor {
+    0% {
+        background: red;
+    }
+
+    25% {
+        background: yellow;
+    }
+
+    50% {
+        background: blue;
+    }
+
+    100% {
+        background: green;
+    }
+}
+
+
+div.color_and_movement {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: relative;
+    -webkit-animation: color_and_movement 5s; /* Chrome, Safari, Opera */
+    animation: color_and_movement 5s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes color_and_movement {
+    0% {
+        background: red;
+        left: 0px;
+    }
+
+    25% {
+        background: yellow;
+        left: 100px;
+    }
+
+    50% {
+        background: blue;
+        left: 200px;
+    }
+
+    100% {
+        background: green;
+        left: 300px;
+    }
+}
+
+/* Standard syntax */
+@keyframes color_and_movement {
+    0% {
+        background: red;
+        left: 0px;
+    }
+
+    25% {
+        background: yellow;
+        left: 100px;
+    }
+
+    50% {
+        background: blue;
+        left: 200px;
+    }
+
+    100% {
+        background: green;
+        left: 300px;
+    }
+}
+
+
+div.borders {
+    border: 10px solid blue;
+    padding: 100px 400px; 
+    background: red;
+    width: 300px;
+    border-radius: 25px;
+    box-shadow: 10px 10px 5px green;
+}
+
+div.backgrounds {
+    background: url(../images/backgrounds.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-origin: border-box;
+}
+
+div.gradient {
+    height: 200px;
+    background: -webkit-linear-gradient(red, blue); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(red, blue); /* Standard syntax (must be last) */
+}
+
+div.text {
+    text-shadow: 5px 5px 5px red;
+}
+
+div.fonts {
+    text-shadow: 5px 5px 5px red;
+}

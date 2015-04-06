@@ -1,0 +1,97 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+
+    <title>MEAN</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1> Application using MEAN stack - Deployed on openshift</h1>
+            <h2>-- Frontend -Angular, Backend - Node, Database- MongoDB</h2>
+
+            <p>
+                In the previous experiments we had all the built the application locally. Now we will deploy it on Openshift.
+                Also, added the functionality of adding the data into the database.
+            </p>
+            <hr />
+            <p>
+                Installed the MongoDB cartridge on Openshift. Made changes to the server file so that it distinguishes between where the server is hosted - on local machine or the server.
+            </p>
+
+        </div>
+        <hr />
+        <a href="http://webdevcs5610-bhumitra.rhcloud.com/" target="_blank"><h3>Click here to open the Openshift project</h3></a>
+        <hr />
+
+
+
+        <p>Below is the content of the server file. We have created a directory public and inside a page index.html which will send requests to get the data and remove the data from the database. The function delete or add, when invoked, deletes or adds the record corresponding to the given ID from the database. It also calls the find function after deleting/adding and send the updated JSON response to the webpage. Just showing the function called for adding to the database.
+        <br /><br />
+        You can find the link to the source code at the end of this page.</p>
+
+<pre>
+//Adds a new Json into the mongodb
+app.post('/api/form', function (req, res) {
+    var form = new Form(req.body);
+    form.save(function (err, doc) {
+        console.log(err);
+        console.log(doc);
+        Form.find(function (err, docs) {
+            res.json(docs);
+        });
+    });
+});
+
+</pre>
+        <hr />
+        <p>The angular App.js contents are given below. It interacts with the Node server and displays the data received from the database. When the function delete is invoked, it invokes the delete function in the node server and deletes the record from the database. It also recieves the response so that it updates the result on the webpage showing that the data is deleted or added</p>
+<pre>
+var app = angular.module("FormApp", [])
+app.controller("FormController",
+function ($scope, $http) {
+    $http.get("/api/form")
+    .success(function (response) {
+        $scope.forms = response
+    });
+    $scope.remove = function (id) {
+        $http.delete("/api/form/" + id)
+        .success(function (response) {
+            $scope.forms=response
+        });
+    }
+    $scope.add = function (form) {
+        alert("\""+form.name+"\""+" will be added to the table and Database");
+        $http.post("/api/form/", form)
+        .success(function (response) {
+            $scope.forms = response;
+        });
+    }
+});
+</pre>
+        <hr />
+
+        <p>Here is the source code</p>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week8/Mongoopenshift.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week8/server.js" target="_blank">Server file</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week8/publicNEW/js/app.js" target="_blank">Angular controller</a>||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week8/publicNEW/index.html" target="_blank">Index.html</a>
+        </p>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=YH5sFprHgl0" target="_blank">Professor's Video</a></li>
+                <li><a href=" http://en.wikipedia.org/wiki/MongoDB" target="_blank">Wikipedia - MongoDB</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

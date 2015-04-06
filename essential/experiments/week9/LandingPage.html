@@ -1,0 +1,73 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+
+    <title>MEAN</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1> Creating a landing page for Project - Tickster </h1>
+            <h2>Tickster is a Movie Hub and an Event Booking website</h2>
+            <hr />
+            <h3>Check the landing page here - <a href="../../Landing.html" target="_blank">Landing Page</a></h3>
+        </div>
+        <hr />
+        <h3>The landing page uses jquery and CSS to accomplish the look. As you move your mouse/hover to either of the section, the corresponding section expands. This is achieved by the peice of code given below. The page is also responsive. </h3>
+
+<pre>
+       $(document).ready(function ($) {
+            var $left = $('.landing-left');
+            var $right = $('.landing-right');
+            var time = 0, type = "easeout";
+            $left.click(function (event) {
+                window.location = '/movies';
+            }).hover(function (e) {
+                $(this).animate({
+                    width: "70%"
+                }, time, type)
+                $right.animate({
+                    width: "30%"
+                }, time, type)
+            });
+            $right.click(function (event) {
+                window.location = '/events';
+            }).hover(function () {
+                $(this).animate({
+                    width: "70%"
+                }, time, type)
+                $left.animate({
+                    width: "30%"
+                }, time, type)
+            });
+        });
+</pre>
+
+        
+        <hr />
+ 
+        <p>Here is the source code</p>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week9/LandingHtml.html" target="_blank">HTML Source for this page</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/Landing.html" target="_blank">Landing page source code</a>||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/Landing/landing.css" target="_blank">Landing page CSS code</a>
+        </p>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="http://www.w3schools.com/" target="_blank">w3Schools.com</a></li>
+                <li><a href=" https://www.youtube.com/watch?v=aNpqDq6lwTg" target="_blank">Professors Video</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
