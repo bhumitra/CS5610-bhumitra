@@ -1,0 +1,56 @@
+﻿
+body {
+    font-family: Verdana;
+    padding-left: 14px;
+}
+
+.imageAnimate {
+    margin-right:5px;
+    float:left;
+    width: 400px;
+    height: 250px;
+    background-image: url('../images/Pictures/img1.jpg');
+}
+
+.imageAnimate:hover {
+    width: 400px;
+    height: 250px;
+    background-image: url('../images/Pictures/img1.gif');
+}
+
+#myimage{
+
+    height: 150px;
+    width: 150px;
+}
+
+#myimage:hover img{
+
+    height: 200px;
+    width: 200px;
+}
+
+
+.boxanimate {
+    width: 100px;
+    height: 100px;
+    background: blue;
+    -webkit-transition: width 2s; 
+    transition: width 2s;
+}
+
+.boxanimate:hover {
+    width: 300px;
+}
+
+
+.gradient {
+    height: 250px;
+    width: 500px;
+    background: -webkit-linear-gradient(orange, blue); /* For Safari 5.1 to 6.0 */
+    background: linear-gradient(orange, blue); /* Standard syntax (must be last) */
+}
+
+.shadow {
+    text-shadow: 10px 3px 2px blue;
+}

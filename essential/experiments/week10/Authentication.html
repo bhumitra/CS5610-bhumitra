@@ -3,7 +3,7 @@
 <html lang="en" ng-app>
 <head>
 
-    <title>MEAN</title>
+    <title>Authentication</title>
 
     <!-- Bootstrap -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -12,17 +12,16 @@
     <div class="container">
         <div class="jumbotron">
             <h1> Implementing the Authentication</h1>
-            <h2>-- Frontend -Angular, Backend - Node, Database- MongoDB</h2>
-
             <p>
                The user will be able to log in to the application using this Passport Authentication.
             </p>
             
         </div>
         <hr />
-        <h3>Login HTML page: A simple login form. Error messages are displayed if incorrect credentials are passed</h3>
+        <h3>Login HTML page: </h3>
+        <p>A simple login form. Error messages are displayed if incorrect credentials are passed</p>
         <pre>
-            &lt;div class=&quot;col-sm-6 col-sm-offset-3&quot;&gt;
+    &lt;div class=&quot;col-sm-6 col-sm-offset-3&quot;&gt;
 	&lt;h1&gt;&lt;span class=&quot;fa fa-sign-in&quot;&gt;&lt;/span&gt; Login&lt;/h1&gt;
 	&lt;!-- show any messages that come back with authentication --&gt;
 	&lt;% if (message.length &gt; 0) { %&gt;
@@ -44,7 +43,7 @@
 </pre>
        <hr />
         <h3>
-            Screens:
+            Screens: Check the images below to see how it works. Detailed functionality can be seen one the project is deployed on openshift.
         </h3>
         <img src="10.3src/Screenshot 2015-04-16 01.58.01.png" height="70%" width="70%"/>
         <img src="10.3src/Screenshot 2015-04-16 01.55.22.png" height="70%" width="70%" />
@@ -116,7 +115,7 @@ function isLoggedIn(req, res, next) {
 }
 
 </pre>
-        <p>The application opens with a default page proviing user to go to login page ot the signup page. </p>
+        <p>The application opens with a default page providing user to go to login page ot the signup page. </p>
 
       
         <hr />
@@ -212,8 +211,6 @@ module.exports = function(passport) {
 };
 
 </pre>
-
-
         <p>Here is the source code</p>
         <p>
             <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/Authentication.html" target="_blank">HTML Source</a> ||

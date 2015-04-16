@@ -1,2 +1,6 @@
 ﻿../../story/whatisnext.htm?../experiments/week10/story.txt			What is Next?
 ../week10/inf/src/moviehomepage.html	Movie Home page
+../week10/10.4src/autocomplete.html	Autocomplete Movie Search
+../week10/Authentication.html	Passport Authentication - Simple Login
+../week10/Like.html	Like movies - Favorites/Watchlist
+../week10/Showtimes.html	Showtime for a Movie

@@ -1,0 +1,109 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+
+    <title>Showtimes</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1> Adding showtimes for a movie</h1>
+            
+            <p>
+              A limitation for Rotten tomatoes API is that it doesnt give you with current showtimes. Hence we are using TMS API to get the showtimes for a particular movie. In this example We are getting showtimes for the movie HOME.
+            </p>
+            <hr />
+          
+
+        </div>
+        <h3>Explaination:
+            </h3>
+        <img src="10.5src/Screenshot 2015-04-16 05.41.13.jpg" width="800" />
+        <p>
+            As seen in the image, The user can type in the desired ZIP code and hit search. The table below is populated with showtimes.
+            This isnt as straight forward as it looks. The movie name fetched from Rotten Tomatoes API is matched with each object fetched from TMS API until a match is found. When the match is found, the $scope object for showtimes is set.
+            Below is a partial code of how it is done. For the simplicity of this example we have hardcoded the movie name "Home". Instead it will be fetched from the API in the project.
+        </p>
+
+        <pre>
+        $scope.dispshowtimes = function (form) {
+        showtimesURL = "http://data.tmsapi.com/v1.1/movies/showings?startDate=2015-04-16&zip=" + form.zip + "&api_key=9tgadcfyrsvqtzuydytxu6v4";
+        console.log(showtimesURL);
+        $http.get(showtimesURL).success(function (response) {
+            movieshows = response;
+            console.log(movieshows);
+            for (i = 0; i < movieshows.length; i++) {
+                console.log(movieshows[i].title);
+                if (movieshows[i].title == "Home") {
+                    $scope.showtimes = movieshows[i].showtimes;
+                    console.log($scope.showtimes);
+                    //  alert("hurr");
+                }
+            }
+        });
+    }
+</pre>
+        <p>Note: The TMS api limits the total number of calls made to the api to 50. You need to pay to get increased limits.</p>
+      <hr />
+      <h3>
+          HTML: The data is displayed on the HTML page using angular.
+      </h3>
+        <pre>
+         &lt;div class=&quot;col-lg-6&quot;&gt;
+            &lt;h4&gt;Showtimes&lt;/h4&gt;
+            &lt;div&gt;
+                &lt;input class=&quot;form-control&quot; ng-model=&quot;form.zip&quot; /&gt;
+            &lt;/div&gt;
+            &lt;button class=&quot;btn pull-right&quot; ng-click=&quot;dispshowtimes(form)&quot;&gt;
+                &lt;span&gt;search&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;table class=&quot;table table-striped&quot;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Theatre Name&lt;/th&gt;
+                        &lt;th&gt;Date&lt;/th&gt;
+                        &lt;th&gt;Time&lt;/th&gt;
+                        &lt;th&gt;Link&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr ng-repeat=&quot;s in showtimes&quot;&gt;
+                        &lt;td&gt;{{s.theatre.name}}&lt;/td&gt;
+                        &lt;td&gt; {{s.dateTime | date:&quot;dd-MM-yyyy&quot;}}&lt;/td&gt;
+                        &lt;td&gt;{{s.dateTime | date:&quot;hh:mm&quot;}}&lt;/td&gt;
+                        &lt;td&gt;&lt;a href=&quot; {{s.ticketURI}}&quot; target=&quot;_blank&quot;&gt;Book&lt;/a&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+</pre>
+
+
+      
+        <hr />
+
+        <p>Here is the source code</p>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/showtimes.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/10.5src/server.js" target="_blank">Server file</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/10.5src/public/js/app.js" target="_blank">Angular controller</a>||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/10.5src/public/index.html" target="_blank">Index.html</a>
+        </p>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="../week10/Like.html" target="_blank">Previous experiment</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

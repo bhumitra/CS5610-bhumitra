@@ -1,0 +1,87 @@
+﻿
+.pad {
+    padding: 30px;
+}
+
+pre {
+    color: darkblue;
+}
+
+.maincontent {
+    width: 100%;
+    text-align: justify;
+}
+
+#image {
+    margin: 0px auto;
+    float: left;
+    border: 5px solid black;
+    width: 550px;
+}
+
+@media screen and (min-width: 960px) {
+    body {
+        background-color: ThreeDLightShadow;
+    }
+
+    #image {
+        width: 500px;
+    }
+
+    .field-group {
+        clear: both;
+    }
+
+    .field-label {
+        float: left;
+    }
+}
+
+
+@media screen and (max-width: 960px) {
+    body {
+        background-color: lightblue;
+    }
+
+    #image {
+        width: 420px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    #image {
+        width: 380px;
+    }
+
+    body {
+        background-color: lightgreen;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #image {
+        width: 340px;
+    }
+
+    body {
+        background-color: lightyellow;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #image {
+        width: 300px;
+    }
+
+    body {
+        background-color: lightsalmon;
+    }
+}
+
+
+
+@media screen and (max-width: 350px) {
+    #image {
+        display: none;
+    }
+}

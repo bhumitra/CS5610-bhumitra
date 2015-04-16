@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <script src="js/angular.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body ng-app="FormApp">
+    <div class="container" ng-controller="FormController">
+
+        <div>
+            <div class="col-md-3">
+                <img ng-src="{{ poster }}" height="360" width="243" />
+            </div>
+            <div class="col-md-9">
+                <p ng-hide="!studio" class="  ng-hide"><b>Studio: </b>{{ studio }}</p>
+                <p ng-hide="!synopsis" class=" ng-hide"><b>Synopsis: </b>{{ synopsis }}</p>
+                <p ng-hide="!critics_score" class=" ng-hide"><b>Critic Score: </b>{{ critics_score }}%</p>
+                <p ng-hide="!audience_score" class=" ng-hide"><b>Audience Score: </b>{{ audience_score }}%</p>
+                <p ng-hide="!cast" class=" ng-hide"><b>Starring: </b>{{ cast }}</p>
+                <p ng-hide="!directors" class=" ng-hide"><b>Directed By: </b>{{ directors }}</p>
+                <p ng-hide="!releaseDate" class=" ng-hide"><b>Release Date: </b>{{ releaseDate }}</p>
+
+                <button id="likeUnlikeBtn" ng-class="changeClass(likeUnlikeText)" ng-click="likeUnlike()">
+                    {{likeUnlikeText}}
+                </button>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h4>Showtimes</h4>
+
+            <div>
+                <input class="form-control" ng-model="form.zip" />
+            </div>
+            <button class="btn pull-right" ng-click="dispshowtimes(form)">
+                <span>search</span>
+            </button>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Theatre Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="s in showtimes">
+                        <td>{{s.theatre.name}}</td>
+                        <td> {{s.dateTime | date:"dd-MM-yyyy"}}</td>
+                        <td>{{s.dateTime | date:"hh:mm"}}</td>
+                        <td><a href=" {{s.ticketURI}}" target="_blank">Book</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row ng-hide " ng-hide="!likedMovies.length">
+        <h4><b>Some movies {{name}} likes</b></h4>
+        <div ng-repeat="mov in likedMovies">
+            <a href="#/movie/{{mov.id}}">
+                <img ng-src="{{ mov.posters.thumbnail }}" height="180" width="122" />
+            </a>
+        </div>
+        <p class="clearBoth">
+    </div>
+
+
+</body>
+</html>

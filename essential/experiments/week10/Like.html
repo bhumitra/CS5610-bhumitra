@@ -3,7 +3,7 @@
 <html lang="en" ng-app>
 <head>
 
-    <title>MEAN</title>
+    <title>showtimes</title>
 
     <!-- Bootstrap -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -15,17 +15,19 @@
             <h2>-- Frontend -Angular, Backend - Node, Database- MongoDB</h2>
 
             <p>
-               The user will be able to like a particular movie. The movies liked by a user are stored in the database. We store the id of the movie along with the username(useremail).
+                The user will be able to like a particular movie. The movies liked by a user are stored in the database. We store the id of the movie along with the username(useremail).
                 The object stored in the database looks like -- { useremail: String, movieid: String}
             </p>
             <hr />
-          
+
 
         </div>
-        <h3>HTML:
-        Displaying the movie info with the like/unlike button. if the user is not logged in, the button is disabled.(Login functionality will be implemented later)</h3>
+        <h3>
+            HTML:
+            Displaying the movie info with the like/unlike button. if the user is not logged in, the button is disabled.(Login functionality will be implemented later)
+        </h3>
         <pre>
-            &lt;div class=&quot;col-md-3&quot;&gt;
+        &lt;div class=&quot;col-md-3&quot;&gt;
             &lt;img ng-src=&quot;{{ poster }}&quot; height=&quot;360&quot; width=&quot;243&quot; /&gt;
         &lt;/div&gt;
         &lt;div class=&quot;col-md-9&quot;&gt;
@@ -41,7 +43,7 @@
             &lt;/button&gt;
         &lt;/div&gt;
 </pre>
-      <hr />
+        <hr />
         <h3>Sever.js:</h3>
         <p>Here is some content of the server file. The likeSchema, </p>
         <pre>
@@ -49,17 +51,12 @@ var likeSchema = mongoose.Schema({
     useremail: String,
     movieid: String,
 });
-
-
 app.get('/like/:id/:email', function (req, res) {
-
     var email = req.params.email;
     var id = req.params.id;
-
     var like = new Like();
     like.useremail = email;
     like.movieid = id;
-
     Like.findOne({ useremail: email, movieid: id }, function (err, result) {
         if (result == null) {
             like.save(function (err, like) {
@@ -73,16 +70,12 @@ app.get('/like/:id/:email', function (req, res) {
         }
     });
 });
-
 app.get('/unlike/:id/:email', function (req, res) {
-
     var email = req.params.email;
     var id = req.params.id;
-
     var like = new Like();
     like.useremail = email;
     like.movieid = id;
-
     Like.findOne({ useremail: email, movieid: id }, function (err, result) {
         if (result != null) {
             Like.remove({ useremail: email, movieid: id }, function (err) {
@@ -96,11 +89,9 @@ app.get('/unlike/:id/:email', function (req, res) {
         }
     });
 });
-
 app.get('/checklikeUnlike/:id/:email', function (req, res) {
     var email = req.params.email;
     var id = req.params.id;
-
     Like.findOne({ useremail: email, movieid: id }, function (err, result) {
  
         if (result != null) {
@@ -111,7 +102,6 @@ app.get('/checklikeUnlike/:id/:email', function (req, res) {
         }
     });
 });
-
 app.get('/getLikes/:useremail', function (req, res) {
     var email = req.params.useremail;
  
@@ -120,7 +110,6 @@ app.get('/getLikes/:useremail', function (req, res) {
             res.send(result);
         });
 });
-
 </pre>
         <hr />
         <h3>Controller : </h3>
@@ -212,10 +201,10 @@ function ($scope, $http) {
         $scope.getLikedMovies();
 }]);
 </pre>
-        
 
 
-      
+
+
         <hr />
 
         <p>Here is the source code</p>
