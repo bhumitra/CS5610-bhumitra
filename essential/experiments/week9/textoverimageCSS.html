@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Text over image</title>
+    <script src="../../js/angular.min.js"></script>
+    <script src="js/MoviesApp2.js"></script>
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+
+    <script src="../../js/jquery.js"></script>
+    <style>
+        .photo-grid {
+            margin: 1em auto;
+            max-width: 1106px;
+            text-align: center;
+        }
+
+            .photo-grid li {
+                border: 5px solid white;
+                display: inline-block;
+                margin: 1em;
+                width: 289px;
+            }
+
+
+            .photo-grid figure {
+                height: 350px;
+                overflow: hidden;
+                position: relative;
+                width: 300px;
+            }
+
+
+
+            .photo-grid li:hover figcaption {
+                opacity: 1;
+            }
+
+            .photo-grid img {
+                display: block;
+                height: 350px;
+                -webkit-transition: all 300ms;
+                -moz-transition: all 300ms;
+                transition: all 300ms;
+                max-width: 100%;
+            }
+
+            .photo-grid li:hover img {
+                -webkit-transform: scale(1.4);
+                -moz-transform: scale(1.4);
+                transform: scale(1.4);
+            }
+
+            .photo-grid figcaption p {
+                display: table-cell;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 1.5em;
+                position: relative;
+                top: -40px;
+                width: 300px;
+                -webkit-transition: all 300ms ease-out;
+                -moz-transition: all 300ms ease-out;
+                transition: all 300ms ease-out;
+                vertical-align: middle;
+            }
+
+            .photo-grid li:hover figcaption p {
+                -moz-transform: translateY(40px);
+                -webkit-transform: translateY(40px);
+                transform: translateY(40px);
+            }
+
+            .photo-grid figcaption {
+                background: rgba(0,0,0,0.8);
+                color: white;
+                display: table;
+                height: 100%;
+                left: 0;
+                opacity: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                -webkit-transition: all 300ms;
+                -moz-transition: all 300ms;
+                transition: all 300ms;
+                -webkit-transition-delay: 100ms;
+                -moz-transition-delay: 100ms;
+                transition-delay: 100ms;
+                z-index: 100;
+            }
+
+        .subinfo {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: .75em;
+        }
+    </style>
+
+</head>
+<body ng-app="MoviesApp">
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Animate text over images on hover without JavaScript </h1>
+            <p>
+                There are three animations happening simultaneously when you move your mouse over each image:
+                <ul>
+                    <li>A zoom effect on the image itself, created by scaling the image up 140%</li>
+                    <li>The text and its transparent black background fading in</li>
+                    <li>The text dropping in from the top</li>
+                </ul>
+                This forms the base layout of my project's homepage.
+            </p>
+        </div>
+
+        <hr />
+        <ul class="photo-grid">
+            <li>
+                <a href="http://www.showbiz411.com/wp-content/uploads/2015/04/avengers.jpg">
+                    <figure>
+                        <img src="http://www.showbiz411.com/wp-content/uploads/2015/04/avengers.jpg" height="180" width="320" alt="Arc de Triomphe">
+                        <figcaption><p>Avengers</p></figcaption>
+                    </figure>
+                </a>
+            </li>
+            <li>
+                <a href="http://horizon2020projects.com/wp-content/uploads/2014/01/Random-chance-may-explain-hereditary-disease-583x304.jpg">
+                    <figure>
+                        <img src="http://horizon2020projects.com/wp-content/uploads/2014/01/Random-chance-may-explain-hereditary-disease-583x304.jpg" height="180" width="320" alt="Eiffel Tower">
+                        <figcaption><p>DNA</p></figcaption>
+                    </figure>
+                </a>
+            </li>
+            <li>
+                <a href="http://images5.fanpop.com/image/photos/28000000/randomised-random-28065169-760-375.jpg">
+                    <figure>
+                        <img src="http://images5.fanpop.com/image/photos/28000000/randomised-random-28065169-760-375.jpg" height="180" width="320" alt="Notre Dame">
+                        <figcaption><p>Random Image</p></figcaption>
+                    </figure>
+                </a>
+            </li>
+        </ul>
+
+        <hr />
+        <h3>HTML:</h3>
+        <p> Put the images in a list, and then use the HTML5 figure and figcaption elements to hold the images and associated text:</p>
+        <pre>
+          &lt;ul class=&quot;photo-grid&quot;&gt;
+         &lt;li&gt;
+             &lt;a href=&quot;http://www.showbiz411.com/wp-content/uploads/2015/04/avengers.jpg&quot;&gt;
+                 &lt;figure&gt;
+                     &lt;img src=&quot;http://www.showbiz411.com/wp-content/uploads/2015/04/avengers.jpg&quot; height=&quot;180&quot; width=&quot;320&quot; alt=&quot;Arc de Triomphe&quot;&gt;
+                     &lt;figcaption&gt;&lt;p&gt;Avengers&lt;/p&gt;&lt;/figcaption&gt;
+                 &lt;/figure&gt;
+             &lt;/a&gt;
+         &lt;/li&gt;
+         &lt;li&gt;
+             &lt;a href=&quot;http://horizon2020projects.com/wp-content/uploads/2014/01/Random-chance-may-explain-hereditary-disease-583x304.jpg&quot;&gt;
+                 &lt;figure&gt;
+                     &lt;img src=&quot;http://horizon2020projects.com/wp-content/uploads/2014/01/Random-chance-may-explain-hereditary-disease-583x304.jpg&quot; height=&quot;180&quot; width=&quot;320&quot; alt=&quot;Eiffel Tower&quot;&gt;
+                     &lt;figcaption&gt;&lt;p&gt;DNA&lt;/p&gt;&lt;/figcaption&gt;
+                 &lt;/figure&gt;
+             &lt;/a&gt;
+         &lt;/li&gt;
+         &lt;li&gt;
+             &lt;a href=&quot;http://images5.fanpop.com/image/photos/28000000/randomised-random-28065169-760-375.jpg&quot;&gt;
+                 &lt;figure&gt;
+                     &lt;img src=&quot;http://images5.fanpop.com/image/photos/28000000/randomised-random-28065169-760-375.jpg&quot; height=&quot;180&quot; width=&quot;320&quot; alt=&quot;Notre Dame&quot;&gt;
+                     &lt;figcaption&gt;&lt;p&gt;Random Image&lt;/p&gt;&lt;/figcaption&gt;
+                 &lt;/figure&gt;
+             &lt;/a&gt;
+         &lt;/li&gt;
+     &lt;/ul&gt;
+     
+</pre>
+        <h3>CSS:</h3>
+        <p>Modify the list style so that our images display side-by-side rather than in a list with bullets. Also,setting width and height for the list items, images, captions and the paragraphs inside the captions. We position the captions over the images, but set their opacity to 0 so that they’re not visible.</p>
+        <pre>
+   .photo-grid {
+	margin: 1em auto;
+	max-width: 1106px;
+	text-align: center;
+   }
+ 
+   .photo-grid li {
+	border: 5px solid white;
+	display: inline-block;
+	margin: 1em;
+	width: 289px;
+   }
+ 
+   .photo-grid img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+    }
+ 
+   .photo-grid figure {
+	height: 163px;
+	overflow: hidden;
+	position: relative;
+	width: 289px;
+   }
+ 
+   .photo-grid figcaption {
+	background: rgba(0,0,0,0.8);
+	color: white;
+	display: table;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 100;
+   }
+ 
+   .photo-grid figcaption p {
+	display: table-cell;
+	font-size: 1.5em;
+	position: relative;
+	top: -40px;
+	width: 289px;
+	vertical-align: middle;
+   }
+</pre>
+        <h3>Showing text on hover: setting opacity of the figcaption to 1 when the list item is hovered. Now text is visible</h3>
+        <pre>
+.photo-grid li:hover figcaption {
+	opacity: 1;
+}
+</pre>
+
+        <h3>Zoom the images: using animation</h3>
+        <pre>
+    .photo-grid img {
+	display: block;
+	height: auto;
+	-webkit-transition: all 300ms;
+	-moz-transition: all 300ms;
+	transition: all 300ms;
+	max-width: 100%;
+    }
+ 
+    .photo-grid li:hover img {
+	-webkit-transform: scale(1.4);
+	-moz-transform: scale(1.4);
+	transform: scale(1.4);
+    }
+</pre>
+        <h3>Dropping text effect: adding in the CSS transition and a CSS transform to move the text 40px down.</h3>
+        <pre>
+   .photo-grid figcaption p {
+	display: table-cell;
+	font-size: 1.5em;
+	position: relative;
+	top: -40px;
+	width: 289px;
+	-webkit-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
+	transition: all 300ms ease-out;
+	vertical-align: middle;
+    }
+ 
+    .photo-grid li:hover figcaption p {
+	-moz-transform: translateY(40px);
+	-webkit-transform: translateY(40px);
+	transform: translateY(40px);
+    }
+</pre>
+        <h3>
+            Fading effect: – a transition and a transition-delay
+        </h3>
+        <pre>
+    .photo-grid figcaption {
+	background: rgba(0,0,0,0.8);
+	color: white;
+	display: table;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	-webkit-transition: all 300ms;
+	-moz-transition: all 300ms;
+	transition: all 300ms;
+	-webkit-transition-delay: 100ms;
+	-moz-transition-delay: 100ms;
+	transition-delay: 100ms;
+	z-index: 100;
+    }
+</pre>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week9/textoverimageCSS.html" target="_blank">HTML Source</a> ||
+            <a href="http://geekgirllife.com/place-text-over-images-on-hover-without-javascript/" target="_blank">Reference Page</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

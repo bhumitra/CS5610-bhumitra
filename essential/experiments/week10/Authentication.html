@@ -1,0 +1,237 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+
+    <title>MEAN</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1> Implementing the Authentication</h1>
+            <h2>-- Frontend -Angular, Backend - Node, Database- MongoDB</h2>
+
+            <p>
+               The user will be able to log in to the application using this Passport Authentication.
+            </p>
+            
+        </div>
+        <hr />
+        <h3>Login HTML page: A simple login form. Error messages are displayed if incorrect credentials are passed</h3>
+        <pre>
+            &lt;div class=&quot;col-sm-6 col-sm-offset-3&quot;&gt;
+	&lt;h1&gt;&lt;span class=&quot;fa fa-sign-in&quot;&gt;&lt;/span&gt; Login&lt;/h1&gt;
+	&lt;!-- show any messages that come back with authentication --&gt;
+	&lt;% if (message.length &gt; 0) { %&gt;
+		&lt;div class=&quot;alert alert-danger&quot;&gt;&lt;%= message %&gt;&lt;/div&gt;
+	&lt;% } %&gt;
+	&lt;!-- LOGIN FORM --&gt;
+	&lt;form action=&quot;/login&quot; method=&quot;post&quot;&gt;
+		&lt;div class=&quot;form-group&quot;&gt;
+			&lt;label&gt;Email&lt;/label&gt;
+			&lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;email&quot;&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;form-group&quot;&gt;
+			&lt;label&gt;Password&lt;/label&gt;
+			&lt;input type=&quot;password&quot; class=&quot;form-control&quot; name=&quot;password&quot;&gt;
+		&lt;/div&gt;
+		&lt;button type=&quot;submit&quot; class=&quot;btn btn-warning btn-lg&quot;&gt;Login&lt;/button&gt;
+	&lt;/form&gt;
+
+</pre>
+       <hr />
+        <h3>
+            Screens:
+        </h3>
+        <img src="10.3src/Screenshot 2015-04-16 01.58.01.png" height="70%" width="70%"/>
+        <img src="10.3src/Screenshot 2015-04-16 01.55.22.png" height="70%" width="70%" />
+        <img src="10.3src/Screenshot 2015-04-16 01.59.06.png" height="70%" width="70%" />
+        <h3>Controller:</h3>
+        <p>The explaination is given above each command:</p>
+        <pre>
+// app/routes.js
+module.exports = function(app, passport) {
+	// =====================================
+	// HOME PAGE (with login links) ========
+	// =====================================
+	app.get('/', function(req, res) {
+		res.render('index.ejs'); // load the index.ejs file
+	});
+	// =====================================
+	// LOGIN ===============================
+	// =====================================
+	// show the login form
+	app.get('/login', function(req, res) {
+		// render the page and pass in any flash data if it exists
+		res.render('login.ejs', { message: req.flash('loginMessage') });
+	});
+	// process the login form
+	app.post('/login', passport.authenticate('local-login', {
+		successRedirect : '/profile', // redirect to the secure profile section
+		failureRedirect : '/login', // redirect back to the signup page if there is an error
+		failureFlash : true // allow flash messages
+	}));
+	// =====================================
+	// SIGNUP ==============================
+	// =====================================
+	// show the signup form
+	app.get('/signup', function(req, res) {
+		// render the page and pass in any flash data if it exists
+		res.render('signup.ejs', { message: req.flash('signupMessage') });
+	});
+	// process the signup form
+	app.post('/signup', passport.authenticate('local-signup', {
+		successRedirect : '/profile', // redirect to the secure profile section
+		failureRedirect : '/signup', // redirect back to the signup page if there is an error
+		failureFlash : true // allow flash messages
+	}));
+	// =====================================
+	// PROFILE SECTION =========================
+	// =====================================
+	// we will want this protected so you have to be logged in to visit
+	// we will use route middleware to verify this (the isLoggedIn function)
+	app.get('/profile', isLoggedIn, function(req, res) {
+		res.render('profile.ejs', {
+			user : req.user // get the user out of session and pass to template
+		});
+	});
+	// =====================================
+	// LOGOUT ==============================
+	// =====================================
+	app.get('/logout', function(req, res) {
+		req.logout();
+		res.redirect('/');
+	});
+};
+// route middleware to make sure
+function isLoggedIn(req, res, next) {
+	// if user is authenticated in the session, carry on
+	if (req.isAuthenticated())
+		return next();
+	// if they aren't redirect them to the home page
+	res.redirect('/');
+}
+
+</pre>
+        <p>The application opens with a default page proviing user to go to login page ot the signup page. </p>
+
+      
+        <hr />
+        <h3>Passport.js -- </h3>
+        <pre>
+// config/passport.js
+// load all the things we need
+var LocalStrategy   = require('passport-local').Strategy;
+// load up the user model
+var User = require('../app/models/user');
+// expose this function to our app using module.exports
+module.exports = function(passport) {
+	// =========================================================================
+    // passport session setup ==================================================
+    // =========================================================================
+    // required for persistent login sessions
+    // passport needs ability to serialize and unserialize users out of session
+    // used to serialize the user for the session
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
+    });
+    // used to deserialize the user
+    passport.deserializeUser(function(id, done) {
+        User.findById(id, function(err, user) {
+            done(err, user);
+        });
+    });
+ 	// =========================================================================
+    // LOCAL SIGNUP ============================================================
+    // =========================================================================
+    // we are using named strategies since we have one for login and one for signup
+	// by default, if there was no name, it would just be called 'local'
+    passport.use('local-signup', new LocalStrategy({
+        // by default, local strategy uses username and password, we will override with email
+        usernameField : 'email',
+        passwordField : 'password',
+        passReqToCallback : true // allows us to pass back the entire request to the callback
+    },
+    function(req, email, password, done) {
+		// find a user whose email is the same as the forms email
+		// we are checking to see if the user trying to login already exists
+        User.findOne({ 'local.email' :  email }, function(err, user) {
+            // if there are any errors, return the error
+            if (err)
+                return done(err);
+            // check to see if theres already a user with that email
+            if (user) {
+                return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+            } else {
+				// if there is no user with that email
+                // create the user
+                var newUser            = new User();
+                // set the user's local credentials
+                newUser.local.email    = email;
+                newUser.local.password = newUser.generateHash(password); // use the generateHash function in our user model
+				// save the user
+                newUser.save(function(err) {
+                    if (err)
+                        throw err;
+                    return done(null, newUser);
+                });
+            }
+        });
+    }));
+    // =========================================================================
+    // LOCAL LOGIN =============================================================
+    // =========================================================================
+    // we are using named strategies since we have one for login and one for signup
+    // by default, if there was no name, it would just be called 'local'
+    passport.use('local-login', new LocalStrategy({
+        // by default, local strategy uses username and password, we will override with email
+        usernameField : 'email',
+        passwordField : 'password',
+        passReqToCallback : true // allows us to pass back the entire request to the callback
+    },
+    function(req, email, password, done) { // callback with email and password from our form
+        // find a user whose email is the same as the forms email
+        // we are checking to see if the user trying to login already exists
+        User.findOne({ 'local.email' :  email }, function(err, user) {
+            // if there are any errors, return the error before anything else
+            if (err)
+                return done(err);
+            // if no user is found, return the message
+            if (!user)
+                return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+            // if the user is found but the password is wrong
+            if (!user.validPassword(password))
+                return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
+            // all is well, return successful user
+            return done(null, user);
+        });
+    }));
+};
+
+</pre>
+
+
+        <p>Here is the source code</p>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/Like.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/10.2src/server.js" target="_blank">Server file</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/10.2src/public/js/app.js" target="_blank">Angular controller</a>||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/10.2src/public/index.html" target="_blank">Index.html</a>
+        </p>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=YH5sFprHgl0" target="_blank">Professor's Video</a></li>
+                <li><a href=" http://en.wikipedia.org/wiki/MongoDB" target="_blank">Wikipedia - MongoDB</a></li>
+                <li><a href="/net4.ccs.neu.edu/home/rasala/" target="_blank">Previous experiments</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

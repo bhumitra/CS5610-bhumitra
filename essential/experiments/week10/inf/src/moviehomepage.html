@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies home page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../../css/bootstrap.css" />
+    <style>
+        .photo-grid {
+            margin: 1em auto;
+            max-width: 1106px;
+            text-align: center;
+        }
+
+            .photo-grid li {
+                border: 5px solid white;
+                display: inline-block;
+                margin: 1em;
+                width: 289px;
+            }
+
+
+            .photo-grid figure {
+                height: 350px;
+                overflow: hidden;
+                position: relative;
+                width: 300px;
+            }
+
+         
+
+            .photo-grid li:hover figcaption {
+                opacity: 1;
+            }
+
+            .photo-grid img {
+                display: block;
+                height: 350px;
+                -webkit-transition: all 300ms;
+                -moz-transition: all 300ms;
+                transition: all 300ms;
+                max-width: 100%;
+            }
+
+            .photo-grid li:hover img {
+                -webkit-transform: scale(1.4);
+                -moz-transform: scale(1.4);
+                transform: scale(1.4);
+            }
+
+            .photo-grid figcaption p {
+                display: table-cell;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 1.5em;
+                position: relative;
+                top: -40px;
+                width: 300px;
+                -webkit-transition: all 300ms ease-out;
+                -moz-transition: all 300ms ease-out;
+                transition: all 300ms ease-out;
+                vertical-align: middle;
+            }
+
+            .photo-grid li:hover figcaption p {
+                -moz-transform: translateY(40px);
+                -webkit-transform: translateY(40px);
+                transform: translateY(40px);
+            }
+
+            .photo-grid figcaption {
+                background: rgba(0,0,0,0.8);
+                color: white;
+                display: table;
+                height: 100%;
+                left: 0;
+                opacity: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                -webkit-transition: all 300ms;
+                -moz-transition: all 300ms;
+                transition: all 300ms;
+                -webkit-transition-delay: 100ms;
+                -moz-transition-delay: 100ms;
+                transition-delay: 100ms;
+                z-index: 100;
+            }
+            .subinfo {
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: .75em;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Creating the Movie home page with infinite scrolling and displaying info via CSS image hover effect</h1>
+            <p>This page is created by using nginfinite scroll directive for angular and CSS effects</p>
+        </div>
+        <hr />
+        <h3>Explaination:</h3>
+        <hr />
+        <h4>HTML:</h4>
+        <p>The infinite-scroll directive will call loadmore() every time the bottom of the element approaches the bottom of the browser window. Data is populated through ng-repeat (angular.js)</p>
+        <pre>
+      &lt;div ng-app=&apos;myApp&apos; ng-controller=&apos;numbersController&apos;&gt;
+        &lt;div infinite-scroll=&apos;loadMore()&apos;&gt;
+            &lt;ul class=&quot;photo-grid&quot;&gt;
+                &lt;li ng-repeat=&apos;m in inTheatreMovies&apos;&gt;
+                    &lt;a href=&quot;#/movie/{{m.id}}&quot;&gt;
+                        &lt;figure&gt;
+                            &lt;img ng-src=&quot;{{m.posters.thumbnail | changeUrl:&apos;/movie/&apos;:1}}&quot; alt=&quot;{{m.title}}&quot; height=&quot;350&quot; width=&quot;300&quot; /&gt;
+                            &lt;figcaption&gt;
+                                &lt;p&gt;
+                                    {{m.title}}
+                                    &lt;br /&gt;
+                                    &lt;span class=&quot;subinfo&quot;&gt;Release Date: {{m.release_dates.theater|date: &apos;MMM-dd-yyyy&apos;}}&lt;/span&gt;
+                                    &lt;br /&gt;
+                                    &lt;span class=&quot;subinfo&quot;&gt;Rating: {{m.ratings.audience_score/20 | number:1}}/5&lt;/span&gt;
+                                    &lt;br /&gt;
+                                    &lt;span class=&quot;subinfo&quot;&gt;Critics: {{m.ratings.critics_score}}%&lt;/span&gt;
+                                &lt;/p&gt;
+                            &lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+        <p>For the above HTML we have a css defined(the smae we used in the previous experiment). We use the photo-grid to align the images as they look on the page. We use the figure and the figure caption tag to lay the text on hover on the images.
+        The text that we display is fetched from the objects received from rotten tomatoes api annd properties like title, rating, release date etc. are displayed on the image.</p>
+        
+        <hr />
+        <h4>CSS:</h4>
+        <pre>
+                .photo-grid {
+            margin: 1em auto;
+            max-width: 1106px;
+            text-align: center;
+        }
+            .photo-grid li {
+                border: 5px solid white;
+                display: inline-block;
+                margin: 1em;
+                width: 289px;
+            }
+            .photo-grid figure {
+                height: 350px;
+                overflow: hidden;
+                position: relative;
+                width: 300px;
+            }
+         
+            .photo-grid li:hover figcaption {
+                opacity: 1;
+            }
+            .photo-grid img {
+                display: block;
+                height: 350px;
+                -webkit-transition: all 300ms;
+                -moz-transition: all 300ms;
+                transition: all 300ms;
+                max-width: 100%;
+            }
+            .photo-grid li:hover img {
+                -webkit-transform: scale(1.4);
+                -moz-transform: scale(1.4);
+                transform: scale(1.4);
+            }
+            .photo-grid figcaption p {
+                display: table-cell;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 1.5em;
+                position: relative;
+                top: -40px;
+                width: 300px;
+                -webkit-transition: all 300ms ease-out;
+                -moz-transition: all 300ms ease-out;
+                transition: all 300ms ease-out;
+                vertical-align: middle;
+            }
+            .photo-grid li:hover figcaption p {
+                -moz-transform: translateY(40px);
+                -webkit-transform: translateY(40px);
+                transform: translateY(40px);
+            }
+            .photo-grid figcaption {
+                background: rgba(0,0,0,0.8);
+                color: white;
+                display: table;
+                height: 100%;
+                left: 0;
+                opacity: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                -webkit-transition: all 300ms;
+                -moz-transition: all 300ms;
+                transition: all 300ms;
+                -webkit-transition-delay: 100ms;
+                -moz-transition-delay: 100ms;
+                transition-delay: 100ms;
+                z-index: 100;
+            }
+            .subinfo {
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: .75em;
+            }
+</pre>
+        <hr />
+        <h4>Controller:</h4>
+        <p>For each iteration, a new page is fetched from the api.The data from this page is pushed into the inTheatreMovies element until the total number of movies is less than total length of the movie array.</p>
+        <pre>
+var movies =[];
+var page = 1;
+var total = 0;
+var numbersController = function($scope,$http){
+    
+    $scope.inTheatreMovies = [];
+    $scope.loadMore = function () {
+        var url = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?page_limit=9" + "&page=" + page + "&country=us&apikey=m8r83jtnrvy92y4w5hxm39cb&callback=JSON_CALLBACK";
+        $http.jsonp(url).success(function (data) {
+            // console.log("hi");
+            movies = data.movies;
+            total = data.total;
+            console.log(total);
+            for (var i = 0; i < movies.length; i++) {
+                if (total > $scope.inTheatreMovies.length) {
+                    $scope.inTheatreMovies.push(movies[i]);
+                }
+            }
+          
+        });
+        page = page + 1;
+    }
+    $scope.loadMore();
+}
+myApp.controller('numbersController', numbersController);
+</pre>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/inf/src/moviehomepage.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/inf/src/app.js" target="_blank">JS Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week9/textoverimageCSS.html" target="_blank">Experiment - textoverimageCSS</a>||
+            <a href="http://binarymuse.github.io/ngInfiniteScroll/" target="_blank">Infinite Scroll</a>
+        </p>
+    </div>
+
+
+      <div ng-app='myApp' ng-controller='numbersController'>
+        <div infinite-scroll='loadMore()'>
+            <ul class="photo-grid">
+                <li ng-repeat='m in inTheatreMovies'>
+                    <a href="#/movie/{{m.id}}">
+                        <figure>
+                            <img ng-src="{{m.posters.thumbnail | changeUrl:'/movie/':1}}" alt="{{m.title}}" height="350" width="300" />
+                            <figcaption>
+                                <p>
+                                    {{m.title}}
+                                    <br />
+                                    <span class="subinfo">Release Date: {{m.release_dates.theater|date: 'MMM-dd-yyyy'}}</span>
+                                    <br />
+                                    <span class="subinfo">Rating: {{m.ratings.audience_score/20 | number:1}}/5</span>
+
+                                    <br />
+                                    <span class="subinfo">Critics: {{m.ratings.critics_score}}%</span>
+                                </p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+   
+    <script src='lib/jquery-2.1.1.min.js'></script>
+    <script src="lib/angular.min.js"></script>
+    <script src='lib/ng-infinite-scroll.min.js'></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+﻿../../story/whatisnext.htm?../experiments/week10/story.txt			What is Next?
+../week10/inf/src/moviehomepage.html	Movie Home page

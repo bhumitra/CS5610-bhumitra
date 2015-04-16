@@ -1,0 +1,241 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+
+    <title>MEAN</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1> Implementing the Like feature</h1>
+            <h2>-- Frontend -Angular, Backend - Node, Database- MongoDB</h2>
+
+            <p>
+               The user will be able to like a particular movie. The movies liked by a user are stored in the database. We store the id of the movie along with the username(useremail).
+                The object stored in the database looks like -- { useremail: String, movieid: String}
+            </p>
+            <hr />
+          
+
+        </div>
+        <h3>HTML:
+        Displaying the movie info with the like/unlike button. if the user is not logged in, the button is disabled.(Login functionality will be implemented later)</h3>
+        <pre>
+            &lt;div class=&quot;col-md-3&quot;&gt;
+            &lt;img ng-src=&quot;{{ poster }}&quot; height=&quot;360&quot; width=&quot;243&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-md-9&quot;&gt;
+            &lt;p ng-hide=&quot;!studio&quot; class=&quot;  ng-hide&quot;&gt;&lt;b&gt;Studio: &lt;/b&gt;{{ studio }}&lt;/p&gt;
+            &lt;p ng-hide=&quot;!synopsis&quot; class=&quot; ng-hide&quot;&gt;&lt;b&gt;Synopsis: &lt;/b&gt;{{ synopsis }}&lt;/p&gt;
+            &lt;p ng-hide=&quot;!critics_score&quot; class=&quot; ng-hide&quot;&gt;&lt;b&gt;Critic Score: &lt;/b&gt;{{ critics_score }}%&lt;/p&gt;
+            &lt;p ng-hide=&quot;!audience_score&quot; class=&quot; ng-hide&quot;&gt;&lt;b&gt;Audience Score: &lt;/b&gt;{{ audience_score }}%&lt;/p&gt;
+            &lt;p ng-hide=&quot;!cast&quot; class=&quot; ng-hide&quot;&gt;&lt;b&gt;Starring: &lt;/b&gt;{{ cast }}&lt;/p&gt;
+            &lt;p ng-hide=&quot;!directors&quot; class=&quot; ng-hide&quot;&gt;&lt;b&gt;Directed By: &lt;/b&gt;{{ directors }}&lt;/p&gt;
+            &lt;p ng-hide=&quot;!releaseDate&quot; class=&quot; ng-hide&quot;&gt;&lt;b&gt;Release Date: &lt;/b&gt;{{ releaseDate }}&lt;/p&gt;
+            &lt;button id=&quot;likeUnlikeBtn&quot; ng-class=&quot;changeClass(likeUnlikeText)&quot; ng-click=&quot;likeUnlike()&quot;&gt;
+                {{likeUnlikeText}}
+            &lt;/button&gt;
+        &lt;/div&gt;
+</pre>
+      <hr />
+        <h3>Sever.js:</h3>
+        <p>Here is some content of the server file. The likeSchema, </p>
+        <pre>
+var likeSchema = mongoose.Schema({
+    useremail: String,
+    movieid: String,
+});
+
+
+app.get('/like/:id/:email', function (req, res) {
+
+    var email = req.params.email;
+    var id = req.params.id;
+
+    var like = new Like();
+    like.useremail = email;
+    like.movieid = id;
+
+    Like.findOne({ useremail: email, movieid: id }, function (err, result) {
+        if (result == null) {
+            like.save(function (err, like) {
+                if (err) {
+                    return console.error(err);
+                }
+                else {
+                    res.send("Unlike");
+                }
+            });
+        }
+    });
+});
+
+app.get('/unlike/:id/:email', function (req, res) {
+
+    var email = req.params.email;
+    var id = req.params.id;
+
+    var like = new Like();
+    like.useremail = email;
+    like.movieid = id;
+
+    Like.findOne({ useremail: email, movieid: id }, function (err, result) {
+        if (result != null) {
+            Like.remove({ useremail: email, movieid: id }, function (err) {
+                if (err) {
+                    return console.error(err);
+                }
+                else {
+                    res.send("Like");
+                }
+            });
+        }
+    });
+});
+
+app.get('/checklikeUnlike/:id/:email', function (req, res) {
+    var email = req.params.email;
+    var id = req.params.id;
+
+    Like.findOne({ useremail: email, movieid: id }, function (err, result) {
+ 
+        if (result != null) {
+            res.send("Unlike");
+        }
+        else {
+            res.send("Like");
+        }
+    });
+});
+
+app.get('/getLikes/:useremail', function (req, res) {
+    var email = req.params.useremail;
+ 
+    Like.find({ useremail: email }).exec(
+        function (err, result) {
+            res.send(result);
+        });
+});
+
+</pre>
+        <hr />
+        <h3>Controller : </h3>
+        <p>As the user clicks the like button, the value is pushed into the database and when the page is refreshed, the added value is displayed on the screen.</p>
+        <img src="10.2src/10.2.png" />
+        <img src="10.2src/10.2.2.png" />
+        <pre>
+            var app = angular.module("FormApp", [])
+app.controller("FormController",["$scope", "$http",
+function ($scope, $http) {
+    var id = 771315639;
+    var moviesDetailsUrl = 'http://api.rottentomatoes.com/api/public/v1.0/movies/' + id + '.json?apikey=' + 'm8r83jtnrvy92y4w5hxm39cb' + '&callback=JSON_CALLBACK';
+    var userEmail = "bhumitra@ymail.com";
+    $scope.fetchMovieDetails = function () {
+        $http.jsonp(moviesDetailsUrl).success(function (data) {
+            console.log(data.movies);
+            $scope.upcomingmovies = data.movies;
+            $scope.movie_id = data.id;
+            $scope.synopsis = data.synopsis;
+            $scope.title = data.title;
+            $scope.poster = "http://content6.flixster.com/movie/" + data.posters.thumbnail.split('/movie/')[1];
+            //    console.log($scope.poster);
+            $scope.critics_score = data.ratings.critics_score;
+            $scope.audience_score = data.ratings.audience_score;
+            $scope.studio = data.studio;
+            $scope.releaseDate = data.release_dates.theater;
+            if (userEmail == null) {
+                $("#likeUnlikeBtn").prop('disabled', true);
+                $scope.likeUnlikeText = "Please login to Like!"
+            }
+            else {
+                $http.get("/checklikeUnlike/" + id + "/" + userEmail)
+               .success(function (response) {
+                   $scope.likeUnlikeText = response;
+               });
+            }
+        });
+     
+    }
+    $scope.fetchMovieDetails();
+    console.log("fetch");
+    $scope.likeUnlike = function () {
+        var id = $scope.movie_id;
+        if ($scope.likeUnlikeText == "Like") {
+            $http.get("/like/" + id + "/" + userEmail)
+             .success(function (response) {
+                 console.log("Successfully liked");
+                 $scope.likeUnlikeText = response;
+             });
+        }
+        else {
+            $http.get("/unlike/" + id + "/" + userEmail)
+             .success(function (response) {
+                 console.log("Successfully unliked");
+                 $scope.likeUnlikeText = response;
+             });
+        }
+    }
+    $scope.changeClass = function (likeUnlikeText) {
+        if (userEmail == undefined) {
+            return "btn btn-disabled";
+        }
+        else {
+            if (likeUnlikeText == "Like")
+                return "btn btn-success";
+            if (likeUnlikeText == "Unlike")
+                return "btn btn-danger";
+        }
+    }
+    $scope.getLikedMovies = function () {
+        $scope.likedMovies = [];
+        var emailToFetch = "bhumitra@ymail.com";
+        $http.get("/getLikes/" + emailToFetch)
+             .success(function (response) {
+                 if (response != null || response != undefined) {
+                     console.log(response);
+                     $.each(response, function (idx, obj) {
+                         var movie_id = obj.movieid;
+                         var moviesDetailsUrlLikes = 'http://api.rottentomatoes.com/api/public/v1.0/movies/' + movie_id + '.json?apikey=' + 'm8r83jtnrvy92y4w5hxm39cb' + '&callback=JSON_CALLBACK';
+                         console.log(moviesDetailsUrlLikes);
+                         $http.jsonp(moviesDetailsUrlLikes).success(function (mdata) {
+                             $scope.likedMovies.push(mdata);
+                         });
+                        
+                     });
+                 }
+             });
+    }
+        $scope.getLikedMovies();
+}]);
+</pre>
+        
+
+
+      
+        <hr />
+
+        <p>Here is the source code</p>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/Like.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/10.2src/server.js" target="_blank">Server file</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/10.2src/public/js/app.js" target="_blank">Angular controller</a>||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/10.2src/public/index.html" target="_blank">Index.html</a>
+        </p>
+
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=YH5sFprHgl0" target="_blank">Professor's Video</a></li>
+                <li><a href=" http://en.wikipedia.org/wiki/MongoDB" target="_blank">Wikipedia - MongoDB</a></li>
+                <li><a href="/net4.ccs.neu.edu/home/rasala/" target="_blank">Previous experiments</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<html ng-app="BasicSlider">
+<head>
+	<title>Angular FlexSlider Example - Basic Carousel</title>
+	<link rel="stylesheet" type="text/css" href="lib/bower_components/flexslider/flexslider.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+   
+	<style type="text/css">
+	.flexslider-container {
+		width: 100%;
+		margin: 10px auto;
+	}
+	</style>
+</head>
+<body ng-controller="BasicSliderCtrl">
+    <flex-slider class="carousel" slide="s in slides track by $index" animation="slide" maxitems=10 animation-loop="false" item-width="210" item-margin="5">
+        <li>
+            <img ng-src="{{s}}">
+        </li>
+    </flex-slider>
+    <div class="container">
+        <div class="jumbotron">
+        <h1>Responsive slider - felxslider2</h1>    
+        <p>Implementing the slider to show the images in the form of a tickr. This will be used to display image posters which are clickable. It is also responsive. Links are given at the bottom of the page. </p>
+        </div>
+        
+        <hr />
+        <h3>Explaination:</h3>
+        <p>This is implemented by using the flex-slider plugin for angular. It can be installed using - bower install angular-flexslider and including its css in the page. Also, AngularJS app, you'll need to import the angular-flexslider module:
+<pre>
+angular.module('myModule', ['angular-flexslider']);</pre> needs to be imported</p>
+        <h3>HTML:</h3>
+        <p>flex slider has a similar function like the ng-repeat called as slide. Also it provides various options for specifying the animation, number of items in the carousal, etc. </p>
+        <pre>
+             &lt;flex-slider class=&quot;carousel&quot; slide=&quot;s in slides track by $index&quot; animation=&quot;slide&quot; maxitems=10 animation-loop=&quot;false&quot; item-width=&quot;210&quot; item-margin=&quot;5&quot;&gt;
+                &lt;li&gt;
+                    &lt;img ng-src=&quot;{{s}}&quot;&gt;
+                &lt;/li&gt;
+            &lt;/flex-slider&gt;
+</pre>
+        <hr />
+        <h3>Controller:</h3>
+        <p>for this example we are just setting the slides array to some image links. Rest is just usual angular stuff. Just the dependency to 'angular-felxslider' needs to be added</p>
+        <pre>
+        var myApp = angular.module('BasicSlider', ['angular-flexslider']);
+		myApp.controller('BasicSliderCtrl', function ($scope) {
+		  
+			$scope.slides = [
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg',
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg',
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+			];
+		});
+</pre>
+        
+        
+     
+     
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week9/basic-carousel.html" target="_blank">HTML Source</a> ||
+            <a href="https://github.com/thenikso/angular-flexslider" target="_blank">Reference Page</a>
+        </p>
+
+    </div>
+
+	<script src="lib/bower_components/jquery/dist/jquery.js"></script>
+    <script src="lib/bower_components/flexslider/jquery.flexslider.js"></script>
+    <script src="lib/bower_components/angular/angular.js"></script>
+    <script src="lib/angular-flexslider.js"></script>
+	<script type="text/javascript">
+        var myApp = angular.module('BasicSlider', ['angular-flexslider']);
+		myApp.controller('BasicSliderCtrl', function ($scope) {
+		  
+			$scope.slides = [
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg',
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg',
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+			];
+		});
+	</script>
+   
+
+
+</body>
+</html>

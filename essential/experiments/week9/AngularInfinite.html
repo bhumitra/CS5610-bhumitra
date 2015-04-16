@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Movie Library</title>
+    <script src="../../js/angular.min.js"></script>
+    <script src="js/MyApp.js"></script>
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+    <script src='../../js/ng-infinite-scroll.js'></script>
+    <script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+</head>
+<body >
+    <div class="container">
+        <h1>Movie Library using Angular</h1>
+        <h4>
+            This is an extension of the movie library. Here, the data is fetched as an JSON object from an API. Type the name of a movie and hit search and wait for a few seconds.
+            When you hit search, searchMovies() is called. The data is fetched and populated into the table below. All functionalities of add/remove/update movies remain same.
+        </h4>
+       
+        <div ng-app='myApp' ng-controller='DemoController'>
+            <div infinite-scroll='reddit.nextPage()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='1'>
+                <div ng-repeat='item in reddit.items'>
+                    <span class='score'>{{item.score}}</span>
+                    <span class='title'>
+                        <a ng-href='{{item.url}}' target='_blank'>{{item.title}}</a>
+                    </span>
+                    <small>
+                        by {{item.author}} -
+                        <a ng-href='http://reddit.com{{item.permalink}}' target='_blank'>{{item.num_comments}} comments</a>
+                    </small>
+                    <div style='clear: both;'></div>
+                </div>
+                <div ng-show='reddit.busy'>Loading data...</div>
+            </div>
+        </div>
+
+
+
+
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/AngularLibraryExt.html" target="_blank">HTML Source</a> ||
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week5/js/MoviesApp2.js" target="_blank">JS Source</a>
+        </p>
+
+    </div>
+
+</body>
+</html>
