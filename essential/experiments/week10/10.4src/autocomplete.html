@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>jQuery UI Autocomplete</title>
+    <link href="../../../css/bootstrap.css" rel="stylesheet" />
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/ui-darkness/jquery-ui.min.css" rel="stylesheet">
+    <script src="./autocomplete_files/jquery.min.js"></script>
+    <script src="./autocomplete_files/jquery-ui.min.js"></script>
+    <style>
+        #autocomplete.ui-autocomplete-loading {
+            background-image: url(autocomplete_files/loading.gif);
+            background-position: right center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1> Movie search autocomplete - Using jQuery</h1>
+            <p>
+                As you type in the searchbox, the autocomplete fetches the relevent data for you.
+            </p>
+        </div>
+        <h3>Search for a movie in the box below. Type 3 characters or more to invoke autocomplete</h3>
+        <form action="http://www.rottentomatoes.com/search/" target="_blank">
+            <div class="input-group">
+                <input id="autocomplete" class="form-control" type="text" placeholder="Search Movies" name="search">
+            </div>
+        </form>
+
+        <hr />
+        <h3>Explaination:</h3>
+        <p>This is done using jQuery, which fetches the data from rotten tomatoes api and populates thes list below the input area. Below is the script. We also use ui darkness theme css. Links given at the end.</p>
+        <pre>
+             $(function () {
+                $("#autocomplete").autocomplete({
+                    delay: 500,
+                    minLength: 3,
+                    source: function (request, response) {
+                        $.getJSON("http://api.rottentomatoes.com/api/public/v1.0/movies.json?callback=?", {
+                            apikey: "m8r83jtnrvy92y4w5hxm39cb",
+                            q: request.term,
+                            page_limit: 10
+                        }, function (data) {
+                            // data is transformed from an array so that we can use it
+                            var array = data.error ? [] : $.map(data.movies, function (m) {
+                                return {
+                                    label: m.title + " (" + m.year + ")",
+                                    url: m.links.alternate
+                                };
+                            });
+                            response(array);
+                        });
+                    },
+                    focus: function (event, ui) {
+                        // prevent autocomplete from updating the textbox
+                        event.preventDefault();
+                    },
+                    select: function (event, ui) {
+                        // prevent autocomplete from updating the textbox
+                        event.preventDefault();
+                        // navigate to the selected item's url
+                        window.open(ui.item.url);
+                    }
+                });
+            });
+</pre>
+        <script>
+            $(function () {
+                $("#autocomplete").autocomplete({
+                    delay: 500,
+                    minLength: 3,
+                    source: function (request, response) {
+                        $.getJSON("http://api.rottentomatoes.com/api/public/v1.0/movies.json?callback=?", {
+                            apikey: "m8r83jtnrvy92y4w5hxm39cb",
+                            q: request.term,
+                            page_limit: 10
+                        }, function (data) {
+                            // data is transformed from an array so that we can use it
+                            var array = data.error ? [] : $.map(data.movies, function (m) {
+                                return {
+                                    label: m.title + " (" + m.year + ")",
+                                    url: m.links.alternate
+                                };
+                            });
+                            response(array);
+                        });
+                    },
+                    focus: function (event, ui) {
+                        // prevent autocomplete from updating the textbox
+                        event.preventDefault();
+                    },
+                    select: function (event, ui) {
+                        // prevent autocomplete from updating the textbox
+                        event.preventDefault();
+                        // navigate to the selected item's url
+                        window.open(ui.item.url);
+                    }
+                });
+            });
+        </script>
+        <p>Here is the source code</p>
+        <p>
+            <a href="http://net4.ccs.neu.edu/home/bhumitra/fileview/Default.aspx?~/experiments/week10/10.4src/autocomplete.html" target="_blank">HTML & JS Source</a>||
+            <a href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/ui-darkness/jquery-ui.min.css" target="_blank">ui darkness CSS</a>
+
+       </p>
+        <div>
+            <h3>Reference</h3>
+            <ul>
+                <li><a href="http://developer.rottentomatoes.com/" target="_blank">Rotten Tomatoes API</a></li>
+                <li><a href="https://jqueryui.com/autocomplete/">jquery autocomplete</a></li>
+                <li><a href="/net4.ccs.neu.edu/home/rasala/" target="_blank">Previous experiments</a></li>
+            </ul>
+        </div>
+         
+    </div>
+</body>
+</html>
