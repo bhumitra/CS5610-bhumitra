@@ -1,0 +1,106 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <title>database -Tickster</title>
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 id="overview" class="page-header"> <i>TICKSTER</i>- MongoDB - Mongoose Models</h1>
+            <p>
+                <i>TICKSTER</i>'s database is fairly straight forward. It uses different collections for users, likes, follows and reviews.
+            </p>
+        </div>
+
+        <div class="text-justify">
+            <h3><b>Details:</b></h3>
+            <p class="contentFont">
+                Below are the Mongoose models for each of them.
+            </p>
+            <ul class="contentFont">
+                <li>
+                    <b>User:</b>
+                    <pre>
+var mongoose = require('mongoose');
+var bcrypt = require('bcrypt-nodejs');
+var userSchema = mongoose.Schema({
+    local: {
+        name : String,
+        profilePicUrl: String,
+        aboutme : String,
+        email : String,
+        password : String,
+}
+});
+// generating a hash
+userSchema.methods.generateHash = function(password) {
+return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+// checking if password is valid
+userSchema.methods.validPassword = function(password) {
+return bcrypt.compareSync(password, this.local.password);
+};
+// create the model for users and expose it to our app
+module.exports = mongoose.model('User', userSchema);
+                </pre>
+
+                </li>
+                <li>
+                    <b>Like:</b>
+                    <pre>
+var mongoose = require('mongoose');
+var likeSchema = mongoose.Schema({
+    useremail: String,
+    movieid: String,
+});
+module.exports = mongoose.model('Like', likeSchema);
+                </pre>
+                </li>
+
+                <li>
+                    <b>Review:</b>
+                    <pre>
+var mongoose = require('mongoose');
+var reviewSchema = mongoose.Schema({
+    useremail: String,
+    userFirstname: String,
+    movieid: String,
+    reviewText: String,
+    creationDate: Date,
+});
+module.exports = mongoose.model('Review', reviewSchema);
+                </pre>
+                </li>
+                <li>
+                    <b>Follow:</b>
+                    <pre>
+var mongoose = require('mongoose');
+var followSchema = mongoose.Schema({
+    useremailfollower: String,
+    useremailfollowed: String,
+});
+module.exports = mongoose.model('Follow', followSchema);
+                </pre>
+                </li>
+            </ul>
+
+        
+        </div>
+
+
+        <hr />
+        <div class="footer">
+            <h4>
+                <a href="http://auth-bhumitra7.rhcloud.com/tickster#/" target="_blank">TICKSTER</a> ||
+                <a href="https://github.com/bhumitra/Tickster" target="_blank">Source Code</a>
+            </h4>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

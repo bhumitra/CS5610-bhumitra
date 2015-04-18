@@ -1,0 +1,57 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <title>About Tickster</title>
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 id="overview" class="page-header"> About this project - <i>TICKSTER</i></h1>
+            <p>
+                <i>TICKSTER</i> is a social movie site for discovering new movies, learning about movies and meeting other people who have similar taste in movies with movie data fetched from the Rotten Tomatoes API.
+                It allows users to create profile, search, like and review movies and follow other users. It also provides you the showtimes for the movies in your area from the TMS API and lets you book them on Fandango.
+                There are no page refreshes happening except for login and logout.
+                <br />
+                It is developed in MEAN (MongoDb, Express, Angular, Nodejs) stack and is fast and highly responsive. It implements infinite/dynamic scrolling, so you get your data as you need!
+            </p>
+        </div>
+
+        <div class="img-responsive">
+            <img src="../tickster images/Home1.PNG" style="max-width:100%" />
+        </div>
+        <hr />
+
+        <div class="text-justify">
+            <h4><b>Feature List:</b></h4>
+            <ul>
+                <li><b>Movies Coming Soon: </b> The homepage displays the upcoming movies tickr in a responsive carousal.</li>
+                <li><b>Movies In theaters: </b> The homepage shows the movies in theatres in a photo grid which on hover displays the movie details. It is implemented with INFINITE/dynamic SCROLLING, so there are no pages. As you scroll down, more content is loaded</li>
+                <li><b>Search: </b> Search for a movie in the search box. Resuts displayed as a table which is also dynamic/infinite scroll enabled.</li>
+                <li><b>Movie Details: </b> The Movie Details page shows movie poster, Title, Release Date, Cast,  Plot, Genre, Rating, Audience rating and Critic's Rating. This page is displayed if a user clicks on a particular movie.
+                <li><b>Like/Unlike Movie:</b> You can like/unlike the movie by clicking the like icon after logging in. Its like creating a BookMark for a movie</li>
+                <li><b>Review:</b> The user and rotten tomatoes reviews are combined into a single section. If you are logged in you can post your own reviews. </li>
+                <li><b>Showtimes:</b> User can search for movie screening in his nearby area by typing in Zip code and Date. Data is fetched and you can proceed with booking on Fandango.</b></li>
+                <li><b>Profile: </b> The user profile page displays profile picture, email, about user along with his favourite movies and the users he/she follows.</li>
+                <li>
+                    <b>Follow User: </b> A user can click on a username under reviews and see his profile and follow that user. Once followed, a link to this user is available under followed users in the profile page.
+                </li>
+            </ul>
+        </div>
+
+
+        <hr />
+        <div class="footer">
+            <h4>
+                <a href="http://auth-bhumitra7.rhcloud.com/tickster#/" target="_blank">TICKSTER</a> ||
+                <a href="https://github.com/bhumitra/Tickster" target="_blank">Source Code</a>
+            </h4>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

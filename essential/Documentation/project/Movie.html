@@ -1,0 +1,65 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <title>Movie -Tickster</title>
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 id="overview" class="page-header"> <i>TICKSTER</i>- Movie Details Page</h1>
+            <p>
+                <i>TICKSTER</i>'s Movie Details page shows movie poster, Title, Release Date, Cast, Directed By, Plot, Genre, Rating, Audience rating, Critic's Rating and Studio.
+            </p>
+        </div>
+
+        <div class="img-responsive">
+            <img src="../tickster images/movdetails.jpg" style="max-width:100%" />
+        </div>
+        <hr />
+
+        <div class="text-justify">
+            <h3><b>Features:</b></h3>
+            <hr />
+            <b>You may also like: </b> If a movie has movies similar to it, they are displayed under heading "You may also like". These are recommendations from tickster. If no similar movies are found in the rottentomatoes api, then this area is not shown<br />
+            <hr />
+            <b>Like: </b> If the user is logged in he can like the movie which will be added to his list of favourite movies otherwise the like button is disabled<br />
+            <hr />
+            <div class="img-responsive">
+                <img src="../tickster images/likeunlike.jpg" style="max-width:100%" />
+            </div>
+            <hr />
+            <b>Showtimes: </b>The showtimes for the movie are fetched from TMS API. It is limited 50 requests per day!. User can search for movie screening in his nearby area by typing in Zip code and Date. Data is fetched and you can proceed with booking on Fandango.<br />
+            <hr />
+            <b>Reviews: </b>If the user is logged in he can post his own review the movie which will be added to the reviews for that movie otherwise review button is disabled.<br />
+            <hr />
+            <div class="img-responsive">
+                <img src="../tickster images/tickets and reviews.jpg" style="max-width:100%" />
+            </div>
+            <hr />
+            <b>Edit Review: </b>If the user is logged in he can edit his posted reviews for a movie by clicking the edit button.<br />
+            <hr />
+            <div class="img-responsive">
+                <img src="../tickster images/editreview.jpg" style="max-width:100%" />
+            </div>
+
+          
+
+        </div>
+
+
+        <hr />
+        <div class="footer">
+            <h4>
+                <a href="http://auth-bhumitra7.rhcloud.com/tickster#/" target="_blank">TICKSTER</a> ||
+                <a href="https://github.com/bhumitra/Tickster" target="_blank">Source Code</a>
+            </h4>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
