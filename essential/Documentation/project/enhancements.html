@@ -1,0 +1,93 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <title>Future -Tickster</title>
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 id="overview" class="page-header"> <i>TICKSTER</i>- Enhancements - Awesome Solutions to known Issues</h1>
+            <p>
+                <i>TICKSTER</i>'s development had some major setbacks. Here I present the solutions to those problems.
+            </p>
+        </div>
+
+        <div class="text-justify">
+            <h3><b>HomePage taking lot of time to load</b></h3>
+            <p>
+                My home page loads more than 30 images. As a workaround to rotten tomatoes api low resolution images,
+                images fetched from flixter. These images are all high resolution images and need to be scaled down.
+                My page size was 22mb when it loaded! Not at all acceptable.
+            </p>
+            <ul class="contentFont">
+                <li>The solution to this was <a href="http://embed.ly/docs/api/display/endpoints/1/display" target="_blank">embed.ly</a> </li>
+                <li>Its api resizes any image from any other URL. Works like charm.</li>
+                <li>
+                    I had to modify my code only a little bit to call this api. Here is my new filter that changes the image a low quality from rotten tomatoes api to a High quality low size image.
+                    <pre>
+   tickster.filter('changeUrl', function () {
+    return function (input, splitChar, splitIndex) {
+        var movieId = input.split(splitChar)[splitIndex];
+        var newUrl = "http://content6.flixster.com/movie/" + movieId;
+        var encodeURL = encodeURIComponent(newUrl);
+      //  console.log(newUrl);
+      //register with your own key for embed.ly 
+        var finalURL="http://i.embed.ly/1/display/resize?url="+encodeURL+"&width=300&grow=true&height=350&key=3d7689a432334657b37ea346684c9bde";
+        if (movieId != null) {
+            return finalURL;
+        } else {
+            //No poster found Image
+            return "http://d18i5l0cp5i5h1.cloudfront.net/static/images/movie.none.det.gif";
+        }
+    }
+});                        
+</pre>
+                </li>
+                <li>
+                    Here is the proof of the magic! From 22mb to 1.2 mb (first time load, no cached images)
+                    AND WITH SAME IMAGE QUALITY(No noticable difference)
+                    <hr />
+                    <h3>Before:</h3>
+                    <hr />
+                    <img src="../tickster images/22mb.png" height="600" style="max-width:100%" />
+                    <hr />
+                    <h3>After:</h3>
+                    <hr />
+                    <img src="../tickster images/1mb.png" height="600" style="max-width:100%" />
+
+
+                </li>
+
+            </ul>
+            <h3><b>Rotten tomatoes limitation</b></h3>
+
+            <ul class="contentFont">
+                <li>
+                    Rotten tomatoes API displays only low resolution Images. Read more to the solution of this problem here --
+                    <a href="../../experiments/week9/RottenTomatoesHDimage.html" target="_blank">Experiment 9 - Rotten Tomatoes HD image</a>
+                </li>
+
+            </ul>
+
+
+
+
+        </div>
+
+
+        <hr />
+        <div class="footer">
+            <h4>
+                <a href="http://auth-bhumitra7.rhcloud.com/#/" target="_blank">TICKSTER</a> ||
+                <a href="https://github.com/bhumitra/Tickster" target="_blank">Source Code</a>
+            </h4>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -60,12 +60,10 @@
 		top: 0;
 		width: 100%;
 		height: 100%;
-		padding-top: 25px;		
+		padding-top: 32px;		
 		text-decoration: none;		
-		text-align: center;
-		font-size: 15px;		
+		text-align: center;	
 		text-shadow: 0 1px 0 rgba(255,255,255,.7);
-		letter-spacing: -.065em;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;		
 		-webkit-transition: all .25s ease-in-out;
 		-o-transition: all .25s ease-in-out;
@@ -85,9 +83,9 @@
 		height: 130%;
 		left: -15%;
 		top: -15%;
-		font-size: 25px;
+		font-size: 20px;
 		font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		padding-top: 38px;
+		padding-top: 48px;
 		-webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
 		-o-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
 		-moz-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
@@ -101,7 +99,7 @@
 	}
 
 a.red {
-		background-color: rgba(22, 39, 221, 0.83);
+		background-color: rgba(13, 33, 250, 0.30);
 		color: White;
 		border-color: rgba(113, 121, 255, 0.33);
 	}
@@ -111,9 +109,9 @@ a.red:hover {
 	}
 
 a.green {
-		background-color: rgba(11, 62, 183, 0.57);
+		background-color: rgba(111, 154, 255, 0.30);
 		color: White;
-		border-color: rgba(0,63,71,.2);
+		border-color: rgba(9, 152, 255, 0.57);
 	}
 
 a.green:hover {
@@ -157,7 +155,7 @@ a.yellow:hover {
 	}
 
 .red span {
-		background: rgba(60, 119, 239, 0.70);		
+		background: rgba(9, 152, 255, 0.69);		
 	}
 
 .yellow span {

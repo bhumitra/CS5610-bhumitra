@@ -124,15 +124,15 @@
 
             <div class="btns">
                 <ul class="ulclass">
-                    <li class="liclass"><a href="http://auth-bhumitra7.rhcloud.com/tickster#/" class="round green" target="_blank">Project<span class="round">TICKSTER</span></a></li>
-                    <li  class="liclass"><a href="../bhumitra/story/index.htm?../documentation/story.txt" class="round red" target="_blank">Docs<span class="round">TICKSTER DOCUMENTATION</span></a></li>
+                    <li class="liclass"><a href="http://auth-bhumitra7.rhcloud.com/#/" class="round green" target="_blank">Project<span class="round">TICKSTER</span></a></li>
+                    <li  class="liclass"><a href="../bhumitra/story/index.htm?../documentation/story.txt" class="round red" target="_blank">Docs<span class="round align-center">TICKSTER Documentation</span></a></li>
                    
                 </ul>
             </div>
             <hr />
             <hr />
             <hr />
-            <footer class="text">© 2015, BhumitraNagar.com</footer>
+            <footer class="text">© 2015, <a href="http://www.bhumitranagar.com" target="_blank"></a> BhumitraNagar.com</footer>
 
 
 

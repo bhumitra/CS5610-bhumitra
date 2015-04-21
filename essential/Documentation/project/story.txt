@@ -10,6 +10,7 @@
 ../project/database.html			Database Models - TICKSTER
 ../project/technologies.html		Technologies - TICKSTER
 ../project/future.html				Future Scope, Improvements, References - TICKSTER
+../project/enhancements.html				ENHANCEMENTS (must see) - TICKSTER
 
 
 
