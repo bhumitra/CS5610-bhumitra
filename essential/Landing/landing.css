@@ -961,6 +961,7 @@ a#load-more-events {
     -webkit-animation: 10s multi_rotate2 linear infinite;
 }
 
+
 @-webkit-keyframes multi_rotate2 {
     0% {
         -webkit-filter: hue-rotate(0deg);
