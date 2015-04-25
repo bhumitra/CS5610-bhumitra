@@ -1,0 +1,310 @@
+
+
+#mynav-start {
+    display: none;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+    #mynav-start span {
+        display: inline-block;
+        padding: 5px 30px;
+        background-color: black;
+        color: blue;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+        #mynav-start span:after {
+            display: inline-block;
+            margin-left: 10px;
+            width: 20px;
+            height: 10px;
+            content: "";
+            border-left: solid 10px transparent;
+            border-top: solid 10px #fff;
+            border-right: solid 10px transparent;
+        }
+
+        #mynav-start span:hover {
+            background-color: darkblue;
+        }
+
+        #mynav-start span.open:after {
+            border-left: solid 10px transparent;
+            border-top: none;
+            border-bottom: solid 10px #fff;
+            border-right: solid 10px transparent;
+        }
+
+nav {
+    margin-bottom: 30px;
+}
+
+    nav#mynavmain {
+        background-color: rgba(0, 0, 0, 0);
+        padding: 5px 0;
+    }
+
+        nav#mynavmain ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav#mynavmain li {
+            display: inline-block;
+            border-right: solid 1px #092cff;
+            padding: 0 0px;
+        }
+
+            nav#mynavmain li:last-child {
+                border-right: none;
+            }
+
+        nav#mynavmain a {
+            display: block;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+            nav#mynavmain a:hover {
+                background-color: darkblue;
+                color: #fff;
+            }
+
+#mynavmain > ul > li > a:hover,
+#mynavmain > ul > li:hover > a,
+#mynavmain > ul > li.active > a {
+    color: lightcyan;
+}
+
+
+nav#mynavmobile {
+    position: relative;
+    display: none;
+}
+
+    nav#mynavmobile ul {
+        display: none;
+        list-style-type: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-left: initial;
+        margin-right: auto;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 1);
+    }
+
+    nav#mynavmobile li {
+        display: block;
+        padding: 5px 0;
+        margin: 0 5px;
+        border-bottom: solid 1px blue;
+    }
+
+        nav#mynavmobile li:last-child {
+            border-bottom: none;
+        }
+
+    nav#mynavmobile a {
+        display: block;
+        color: white;
+        padding: 5px 15px;
+        text-decoration: none;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+        nav#mynavmobile a:hover {
+            background-color: darkblue;
+            color: #fff;
+        }
+
+
+
+@media all and (max-width: 900px) {
+    #mynav-start {
+        display: block;
+    }
+
+    nav#mynavmain {
+        display: none;
+    }
+
+    nav#mynavmobile {
+        display: block;
+    }
+}
+
+
+
+
+.btns {
+    margin-top: 1%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.myul {
+    margin: 5px auto;
+    text-align: center;
+}
+
+.myli {
+    margin-right: 20px;
+    list-style: none;
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+
+@-moz-keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@-webkit-keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+
+@-o-keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.round {
+    color: White;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 32px;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,.7);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    box-shadow: 2px 2px 7px rgba(0,0,0,.2);
+    border-radius: 300px;
+    z-index: 1;
+    border-width: 4px;
+    border-style: solid;
+}
+
+    .round:hover {
+        color: Black;
+        width: 130%;
+        height: 130%;
+        left: -15%;
+        top: -15%;
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding-top: 48px;
+        -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+        -o-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+        -moz-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+        box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+        z-index: 2;
+        border-size: 10px;
+        -webkit-transform: rotate(-360deg);
+        -moz-transform: rotate(-360deg);
+        -o-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+    }
+
+a.doccolor {
+    background-color: rgba(13, 33, 250, 0.30);
+    color: White;
+    border-color: rgba(113, 121, 255, 0.33);
+}
+
+    a.doccolor:hover {
+        font-size: 0px;
+    }
+
+a.projcolor {
+    background-color: rgba(111, 154, 255, 0.30);
+    color: White;
+    border-color: rgba(9, 152, 255, 0.57);
+}
+
+    a.projcolor:hover {
+        font-size: 0px;
+    }
+
+
+.round span.round {
+    display: block;
+    opacity: 0;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    font-size: 1px;
+    border: none;
+    padding: 40% 20% 0 20%;
+    color: White;
+}
+
+.round span:hover {
+    opacity: .85;
+    font-size: 16px;
+    -webkit-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    -moz-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    -o-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    text-shadow: 0 1px 1px rgba(0,0,0,.5);
+}
+
+.projcolor span {
+    background: rgba(9, 152, 255, 0.69);
+}
+
+.doccolor span {
+    background: rgba(9, 152, 255, 0.69);
+}

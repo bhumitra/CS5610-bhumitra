@@ -12,10 +12,24 @@
     <meta charset='utf-8' />
 
     <title>Bhumitra Nagar</title>
-    <link rel="stylesheet" href="css/stylesMenu2.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Sigmar+One" />
+    <link rel="stylesheet" href="css/stylesMenu3.css">
+
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="js/scriptMenu.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Sigmar+One" />
+    <script>
+        $(document).ready(function () {
+            $("#mynavmobile").html($("#mynavmain").html());
+            $("#mynav-start span").click(function () {
+                if ($("nav#mynavmobile ul").hasClass("expanded")) {
+                    $("nav#mynavmobile ul.expanded").removeClass("expanded").slideUp(250);
+                    $(this).removeClass("open");
+                } else {
+                    $("nav#mynavmobile ul").addClass("expanded").slideDown(250);
+                    $(this).addClass("open");
+                }
+            });
+        });
+</script>
 
     <style type="text/css">
         html body {
@@ -92,7 +106,10 @@
 
     <div class="pad">
         <form id="form1" runat="server">
-            <div id='mymenu'>
+            <div id="mynav-start">
+                <span>Menu</span>
+            </div>
+            <nav id='mynavmain'>
                 <ul>
 
                     <li class="active"><a href="https://github.com/bhumitra/CS5610-bhumitra" target="_blank">GitHub</a></li>
@@ -109,7 +126,8 @@
                     <li><a href="blog/" target="_blank">Blog</a></li>
 
                 </ul>
-            </div>
+            </nav>
+            <nav id="mynavmobile"></nav>
 
             <br />
 
@@ -117,27 +135,26 @@
                 <img height="300" width="400" src="images/Pictures/me.jpg" style="border-radius: 50%; max-width: 100%; vertical-align: middle" />
                 <h2>Bhumitra Nagar </h2>
             </div>
-                        <br />
+            <br />
             <p class="text">
                 I am a graduate student at Northeastern University pursuing Master's in Computer Science. I am building this website as a part of Web Development course CS5610. I have 3 years of experience as a senior software engineer at Infosys Ltd. where I worked as a Java application developer and an Oracle database administrator. I am looking forward to optimally utilize my computing talent in a free environment to implement ideas I always possessed but never got a chance to implement – “Ideas are no one’s property, they belong to whoever expresses them best.” That’s how Zuckerberg did it, that’s how I would do it. I am a gamer, football fan and have interest in designing and playing computer games. "Gaming might be considered a pastime; it’s a passion for me."
             </p>
 
             <div class="btns">
-                <ul class="ulclass">
-                    <li class="liclass"><a href="http://auth-bhumitra7.rhcloud.com/#/" class="round green" target="_blank">Project<span class="round">TICKSTER</span></a></li>
-                    <li  class="liclass"><a href="../bhumitra/story/index.htm?../documentation/story.txt" class="round red" target="_blank">Docs<span class="round align-center">TICKSTER Documentation</span></a></li>
-                   
+                <ul class="myul">
+                    <li class="myli"><a href="http://auth-bhumitra7.rhcloud.com/#/" class="round projcolor" target="_blank">Project<span class="round">TICKSTER</span></a></li>
+                    <li class="myli"><a href="../bhumitra/story/index.htm?../documentation/story.txt" class="round doccolor" target="_blank">Docs<span class="round align-center">TICKSTER Documentation</span></a></li>
+
                 </ul>
             </div>
             <hr />
             <hr />
             <hr />
-            <footer class="text">© 2015, <a href="http://www.bhumitranagar.com" target="_blank"></a> BhumitraNagar.com</footer>
+            <footer class="text">© 2015, <a href="http://www.bhumitranagar.com" target="_blank"></a>BhumitraNagar.com</footer>
 
 
 
         </form>
-
     </div>
 
 </body>
